@@ -108,3 +108,65 @@ export const SearchInput = styled.input`
     height: 20px;
 
   }`
+
+  
+export const BoardListArea = styled.div`
+
+`;
+
+export const BoardTable = styled.table`
+  font-size: 13px;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+`;
+
+export const TableHead = styled.thead`
+  text-align: center;
+`;
+
+export const TableBody = styled.tbody`
+  text-align: center;
+`;
+
+export const TableRow = styled.tr`
+  height: 60px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+`;
+
+export const ThNum = styled.th`
+  width: 150px;
+  text-align: center;
+`;
+
+export const ThTitle = styled.th`
+  flex: 1;
+`;
+
+export const ThDate = styled.th`
+  width: 150px;
+  text-align: center;
+`;
+
+export const ThViews = styled.th`
+  width: 150px;
+  text-align: center;
+`;
+
+export const BoardLink = styled.a`
+  color: inherit;
+  display: inline-block;
+  line-height: 1.4;
+  word-break: break-all;
+  vertical-align: middle;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
