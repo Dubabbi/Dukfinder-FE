@@ -19,7 +19,32 @@ export default function Notice() {
             </N.SearchWrap>
            </N.SearchWindow>
           </N.BoardSearchArea>
-
+                  {/* Board List Area */}
+        <N.BoardListArea>
+          <N.BoardTable>
+            <N.TableHead>
+              <N.TableRow>
+                <N.ThNum>NO</N.ThNum>
+                <N.ThTitle>제목</N.ThTitle>
+                <N.ThDate>날짜</N.ThDate>
+                <N.ThViews>조회수</N.ThViews>
+              </N.TableRow>
+            </N.TableHead>
+            {/* Table Body content goes here */}
+            <N.TableBody>
+              {currentData.map((_, index) => (
+                <N.TableRow key={index}>
+                  <N.ThNum>{startIndex + index + 1}</N.ThNum>
+                  <N.ThTitle>
+                    <N.BoardLink href="#">공지 제목 {startIndex + index + 1}</N.BoardLink>
+                  </N.ThTitle>
+                  <N.ThDate>2023-01-01</N.ThDate>
+                  <N.ThViews>100</N.ThViews> {/* 조회수는 실제 데이터로 대체해야 합니다. */}
+                </N.TableRow>
+              ))}
+            </N.TableBody>
+          </N.BoardTable>
+          </N.BoardListArea>
         </N.Section>
         </M.MainWrapper>
     );
