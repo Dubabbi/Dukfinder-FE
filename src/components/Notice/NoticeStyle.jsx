@@ -112,22 +112,22 @@ export const SearchInput = styled.input`
   
 export const BoardListArea = styled.div`
 
-`;
+`
 
 export const BoardTable = styled.table`
   font-size: 13px;
   width: 100%;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-`;
+`
 
 export const TableHead = styled.thead`
   text-align: center;
-`;
+`
 
 export const TableBody = styled.tbody`
   text-align: center;
-`;
+`
 
 export const TableRow = styled.tr`
   height: 60px;
@@ -136,26 +136,26 @@ export const TableRow = styled.tr`
   align-items: center;
   border-bottom: 1px solid #ccc;
   text-align: center;
-`;
+`
 
 export const ThNum = styled.th`
   width: 150px;
   text-align: center;
-`;
+`
 
 export const ThTitle = styled.th`
   flex: 1;
-`;
+`
 
 export const ThDate = styled.th`
   width: 150px;
   text-align: center;
-`;
+`
 
 export const ThViews = styled.th`
   width: 150px;
   text-align: center;
-`;
+`
 
 export const BoardLink = styled.a`
   color: inherit;
@@ -169,4 +169,46 @@ export const BoardLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
-`;
+`
+
+export const PaginationWrapper = styled.ul`
+  list-style: none;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  margin-top: 20px;
+
+  li {
+    margin: 0 5px;
+    display: inline-block;
+  }
+
+  a {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    cursor: pointer;
+
+    &.active {
+      background-color: #333;
+      color: #fff;
+    }
+  }
+`
+
+
+
+export const PageNumber = styled.a`
+  margin: 0 10px;
+  color: #007bff;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+export const CurrentPage = styled.span`
+  margin: 0 10px;
+  font-weight: bold;
+`
