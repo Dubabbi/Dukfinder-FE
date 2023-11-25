@@ -63,6 +63,16 @@ export default function Notice() {
               ))}
             </N.TableBody>
           </N.BoardTable>
+          {/* Pagination */}
+          <N.PaginationWrapper>
+            {Array.from({ length: totalPages }, (_, index) => (
+              <li key={index} className={currentPage === index + 1 ? 'active' : ''}>
+                <a href="#" onClick={() => handlePageChange(index + 1)}>
+                  {index + 1}
+                </a>
+              </li>
+            ))}
+           </N.PaginationWrapper>
           </N.BoardListArea>
         </N.Section>
         </M.MainWrapper>
