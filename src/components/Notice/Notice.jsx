@@ -5,6 +5,7 @@ import * as N from './NoticeStyle';
 export default function Notice() {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10; // Number of items to display per page
+    const totalPages = Math.ceil(15 / itemsPerPage); // Calculate the total number of pages
 
     // 페이지 변경 시 호출되는 함수
     const handlePageChange = (page) => {
