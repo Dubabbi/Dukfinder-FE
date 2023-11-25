@@ -1,7 +1,26 @@
+import React, { useState } from 'react';
 import * as M from '../Main/MainStyle';
 import * as N from './NoticeStyle';
 
 export default function Notice() {
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10; // Number of items to display per page
+
+    // 페이지 변경 시 호출되는 함수
+    const handlePageChange = (page) => {
+      // 예시로 현재 페이지를 변경하고 다른 작업을 수행할 수 있습니다.
+      setCurrentPage(page);
+      // 여기서 추가적인 작업을 수행할 수 있습니다.
+      // 예: 해당 페이지의 데이터를 불러오기, 또는 렌더링 로직 수행 등
+    };
+  
+    // 계산된 현재 페이지의 데이터 슬라이싱 및 역순으로 정렬
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const currentData = Array.from({ length: 15 })
+      .slice(startIndex, endIndex)
+      .reverse();
+  
     return (
         <M.MainWrapper>
         <N.Section>
