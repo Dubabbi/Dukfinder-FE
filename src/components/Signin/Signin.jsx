@@ -71,8 +71,10 @@ const Signin = () => {
 
         <div>
           <S.BottomButton onClick={generateRandom} disabled={notAllow}>
-            인증코드 보내기
-          </S.BottomButton>
+            <a href='./Verification'>
+              인증코드 보내기
+            </a>
+            </S.BottomButton>
         </div>
       </L.Page>
     </L.LoginWrapper>
