@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const TextWrap = styled.div`
   margin-top: 10%;
-  margin-bottom: 8%;
+  margin-bottom: 11%;
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
