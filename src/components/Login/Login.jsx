@@ -87,7 +87,7 @@ const Login = () => {
         </L.InputWrap>
         <L.LostPwMessage>
         <L.UnderlinedText>
-          비밀번호를 잊으셨나요?
+          <a href = "#">비밀번호를 잊으셨나요?</a>
         </L.UnderlinedText>
         </L.LostPwMessage>
       </L.ContentWrap>
@@ -96,7 +96,7 @@ const Login = () => {
         <L.BottomButton onClick={onClickConfirmButton} disabled={notAllow}>
           로그인
         </L.BottomButton>
-        <L.NoAccount><p>계정이 없으신가요? </p><p style = {{color: 'blue'}}><L.UnderlinedText> 회원가입</L.UnderlinedText></p></L.NoAccount>
+        <L.NoAccount><p>계정이 없으신가요? </p><p style = {{color: 'blue'}}><L.UnderlinedText><a href = "./Signin">회원가입</a></L.UnderlinedText></p></L.NoAccount>
       </div>
     </L.Page>
     </L.LoginWrapper>
