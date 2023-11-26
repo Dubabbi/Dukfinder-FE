@@ -2,8 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import * as L from './LoginStyle';
 
+const User = {
+  email: 'test@example.com',
+  pw: 'test2323@@@',
+};
 
-export default function Login () {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
 
@@ -39,17 +43,51 @@ export default function Login () {
       setPwValid(false);
     }
   };
-  
+ 
   return (
     <L.LoginWrapper>
     <L.Page>
       <L.TitleWrap>
-          <p style={{ color: 'red'}}>🐤Duk</p><p>finder🐤에 오신 것을</p><br/>
-          환영합니다!👋
-        </L.TitleWrap>
-        {/* 🦆 */}
+        <p style={{ color: 'red'}}>🐤Duk</p><p>finder🐤에 오신 것을</p><br/>
+        환영합니다!👋
+      </L.TitleWrap>
+      {/* 🦆 */}
+      <L.ContentWrap>
+        <L.InputTitle>Email</L.InputTitle>
+        <L.InputWrap>
+          <L.Input
+            type="text"
+            placeholder="test@gmail.com"
+            value={email}
+            onChange={handleEmail}
+          />
+        </L.InputWrap>
+        <L.ErrorMessageWrap>
+          {!emailValid && email.length > 0 && (
+            <div>올바른 이메일을 입력해주세요.</div>
+          )}
+        </L.ErrorMessageWrap>
+
+        <L.InputTitle style={{ marginTop: '26px' }}>Password</L.InputTitle>
+        <L.InputWrap>
+          <L.Input
+            type="password"
+            placeholder="Enter your password"
+            value={pw}
+            onChange={handlePw}
+          />
+        </L.InputWrap>
+        <L.LostPwMessage>
+        <L.UnderlinedText>
+          비밀번호를 잊으셨나요?
+        </L.UnderlinedText>
+        </L.LostPwMessage>
+      </L.ContentWrap>
+
+
     </L.Page>
     </L.LoginWrapper>
   );
 };
 
+export default Login;
