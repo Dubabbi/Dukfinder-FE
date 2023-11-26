@@ -92,6 +92,25 @@ export const Input = styled.input`
   }
 `;
 
+export const BottomButton = styled.button`
+  margin-left: 5%;
+  width: 90%;
+  height: 48px;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  background-color: #9e30f4;
+  color: white;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: #FFE665;
+    font-size: 17px;
+    color: #0d0d0d;
+  }
+`;
+
 export const ErrorMessageWrap = styled.div`
   margin-top: 8px;
   margin-left: 5%;
