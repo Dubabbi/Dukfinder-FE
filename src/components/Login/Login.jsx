@@ -69,12 +69,14 @@ const Login = () => {
             value={email}
             onChange={handleEmail}
           />
+
         </L.InputWrap>
         <L.ErrorMessageWrap>
           {!emailValid && email.length > 0 && (
             <div>올바른 이메일을 입력해주세요.</div>
           )}
         </L.ErrorMessageWrap>
+
 
         <L.InputTitle style={{ marginTop: '26px' }}>Password</L.InputTitle>
         <L.InputWrap>
@@ -90,14 +92,15 @@ const Login = () => {
           <a href = "#">비밀번호를 잊으셨나요?</a>
         </L.UnderlinedText>
         </L.LostPwMessage>
-      </L.ContentWrap>
+      
 
       <div>
         <L.BottomButton onClick={onClickConfirmButton} disabled={notAllow}>
           로그인
         </L.BottomButton>
-        <L.NoAccount><p>계정이 없으신가요? </p><p style = {{color: 'blue'}}><L.UnderlinedText><a href = "./Signin">회원가입</a></L.UnderlinedText></p></L.NoAccount>
+        <L.NoAccount><p>계정이 없으신가요? </p><p style = {{color: 'blue'}}><L.UnderlinedText><a href = "./Signin"> 회원가입</a></L.UnderlinedText></p></L.NoAccount>
       </div>
+      </L.ContentWrap>
     </L.Page>
     </L.LoginWrapper>
   );

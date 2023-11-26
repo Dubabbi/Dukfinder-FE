@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 
 export const LoginWrapper = styled.div`
-  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -12,29 +11,28 @@ export const LoginWrapper = styled.div`
 export const Page = styled.div`
   position: absolute;
   top: 20%;
-  bottom: 20%;
+  bottom: 0px;
   width: 100%;
-  max-width: 500px;
-  padding: 0 20px;
+  max-width: 550px;
+  padding: 0 3%;
   left: 50%;
   transform: translate(-50%, 0);
   overflow: hidden;
-  display: flex;
   flex-direction: column;
   border-radius: 20px;
   justify-content: center;
-  height: 500px;
+  height: 600px;
   background-color: #ffffff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 export const TitleWrap = styled.div`
-  margin-top: 65px;
-  font-size: 26px;
+  margin-top: 20%;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
   color: #262626;
-  letter-spacing: 0.5px;
+  letter-spacing: 0px;
   line-height: 1.5;
   p {
     display: inline; /* 'Duk'를 한 줄에 표시하기 위해 추가 */
@@ -43,22 +41,21 @@ export const TitleWrap = styled.div`
 
 export const ContentWrap = styled.div`
   margin-top: 26px;
-  flex: 1;
   position: relative; /* 상대적인 위치 설정 */
 `;
 
 export const LostPwMessage = styled.div`
-  position: fixed;
+  position: relative;
   margin-top: 8px;
-  margin-left: 61%;
+  margin-left: 52%;
   cursor: pointer;
   width: 90%;
   color: red;
-  font-size: 12px;
+  font-size: 14px;
 `
 
 export const InputTitle = styled.div`
-  font-size: 15px;
+  font-size: 17px;
   margin-left: 5%;
   width: 90%;
   font-weight: 600;
@@ -84,8 +81,8 @@ export const Input = styled.input`
   width: 100%;
   outline: none;
   border: none;
-  height: 17px;
-  font-size: 14px;
+  height: 20%;
+  font-size: 20px;
   font-weight: 400;
 
   &::placeholder {
@@ -95,41 +92,45 @@ export const Input = styled.input`
 
 export const BottomButton = styled.button`
   margin-left: 5%;
+  margin-top: 3%;
   width: 90%;
-  height: 48px;
+  padding: 16px;
+  height: 10%;
   border: none;
   font-weight: bold;
   border-radius: 10px;
   background-color: #9e30f4;
   color: white;
-  margin-bottom: 20px;
   cursor: pointer;
 
   &:disabled {
     background-color: #FFE665;
-    font-size: 17px;
+    font-size: 20px;
     color: #0d0d0d;
   }
 `;
 
 export const ErrorMessageWrap = styled.div`
-  position: absolute;
-  top: 32%; /* 맨 위에 위치하도록 설정 */
-  left: 6%;
+  position: fixed;
+  padding-left: 5%;
+  margin-top: 1%;
   width: 90%;
   color: #ef0000;
-  font-size: 12px;
-  padding-top: 8px; /* margin-top 대신 padding-top 사용 */
+  font-size: 13px;
 `;
 
 export const NoAccount = styled.div`
-  margin-bottom: 30px;
+  margin-top: 3%;
+  max-width: 100%;
   cursor: pointer;
-  text-align: center;
-  font-size: 13px;
+  text-align: center; 
   p {
     font-weight: bold;
-    display: inline; /* 'Duk'를 한 줄에 표시하기 위해 추가 */
+    display: inline; 
+    font-size: 13px;
+  }
+  a {
+    font-size: 15px;
   }
 `
 
