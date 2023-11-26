@@ -44,6 +44,7 @@ export const TitleWrap = styled.div`
 export const ContentWrap = styled.div`
   margin-top: 26px;
   flex: 1;
+  position: relative; /* 상대적인 위치 설정 */
 `;
 
 export const LostPwMessage = styled.div`
@@ -112,11 +113,13 @@ export const BottomButton = styled.button`
 `;
 
 export const ErrorMessageWrap = styled.div`
-  margin-top: 8px;
-  margin-left: 5%;
+  position: absolute;
+  top: 32%; /* 맨 위에 위치하도록 설정 */
+  left: 6%;
   width: 90%;
   color: #ef0000;
   font-size: 12px;
+  padding-top: 8px; /* margin-top 대신 padding-top 사용 */
 `;
 
 export const NoAccount = styled.div`
