@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const TextWrap = styled.div`
   margin-top: 10%;
-  margin-bottom: 10%;
+  margin-bottom: 8%;
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
@@ -11,7 +11,7 @@ export const TextWrap = styled.div`
 
 export const BottomButton = styled.button`
   margin-left: 5%;
-  margin-top: 9%;
+  margin-top: 8%;
   width: 90%;
   padding: 16px;
   height: 10%;
