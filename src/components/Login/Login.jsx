@@ -43,7 +43,15 @@ const Login = () => {
       setPwValid(false);
     }
   };
- 
+  
+  const onClickConfirmButton = () => {
+    if (email === User.email && pw === User.pw) {
+      alert('로그인에 성공했습니다.');
+    } else {
+      alert('등록되지 않은 회원입니다.');
+    }
+  };// 알파벳, 숫자, 특수 문자 외의 다른 문자가 없어야 함. 총 길이가 8에서 20 사이여야 함. 알파벳, 숫자, 특수 문자가 각각 한 개 이상 들어가 있어야 함.
+
   return (
     <L.LoginWrapper>
     <L.Page>
@@ -84,7 +92,12 @@ const Login = () => {
         </L.LostPwMessage>
       </L.ContentWrap>
 
-
+      <div>
+        <L.BottomButton onClick={onClickConfirmButton} disabled={notAllow}>
+          로그인
+        </L.BottomButton>
+        <L.NoAccount><p>계정이 없으신가요? </p><p style = {{color: 'blue'}}><L.UnderlinedText> 회원가입</L.UnderlinedText></p></L.NoAccount>
+      </div>
     </L.Page>
     </L.LoginWrapper>
   );
