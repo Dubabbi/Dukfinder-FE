@@ -93,7 +93,7 @@ export const Input = styled.input`
 
 export const BottomButton = styled.button`
   margin-left: 5%;
-  margin-top: 3%;
+  margin-top: 8%;
   width: 90%;
   padding: 16px;
   height: 10%;

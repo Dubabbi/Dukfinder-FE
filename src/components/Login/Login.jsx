@@ -87,11 +87,11 @@ const Login = () => {
             onChange={handlePw}
           />
         </L.InputWrap>
-        <L.LostPwMessage>
+        {/* <L.LostPwMessage>
         <L.UnderlinedText>
           <a href = "#">비밀번호를 잊으셨나요?</a>
         </L.UnderlinedText>
-        </L.LostPwMessage>
+        </L.LostPwMessage> */}
       
 
       <div>
