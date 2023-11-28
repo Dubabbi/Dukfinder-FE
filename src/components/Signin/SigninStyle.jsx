@@ -1,9 +1,22 @@
 // SigninStyle.jsx
 import styled from 'styled-components';
 
+export const TitleWrap = styled.div`
+  margin-top: 8%;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  color: #262626;
+  letter-spacing: 0px;
+  line-height: 1.5;
+  p {
+    display: inline; 
+  }
+`;
+
+
 export const TextWrap = styled.div`
-  margin-top: 10%;
-  margin-bottom: 11%;
+  margin-bottom: 2%;
   font-size: 15px;
   text-align: center;
   line-height: 1.5;
@@ -11,9 +24,8 @@ export const TextWrap = styled.div`
 
 export const BottomButton = styled.button`
   margin-left: 5%;
-  margin-top: 8%;
   width: 90%;
-  padding: 16px;
+  margin-top: 2%;
   height: 10%;
   border: none;
   font-weight: bold;
@@ -25,8 +37,8 @@ export const BottomButton = styled.button`
 
   &:disabled {
     margin-left: 5%;
-    margin-top: 8%;
     width: 90%;
+    margin-top: 2%;
     padding: 16px;
     height: 10%;
     border: none;
