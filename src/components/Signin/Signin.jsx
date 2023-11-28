@@ -11,6 +11,8 @@ const User = {
 const Signin = () => {
   const [email, setEmail] = useState('');
   const [emailValid, setEmailValid] = useState(false);
+  const [pw, setPw] = useState('');
+  const [pwValid, setPwValid] = useState(false);
   const [name, setName] = useState('');
   const [nameValid, setNameValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
@@ -49,6 +51,28 @@ const Signin = () => {
       setNameValid(true);
     } else {
       setNameValid(false);
+    }
+  };
+
+  const handlePw = (e) => {
+    setPw(e.target.value);
+    const regex =
+      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+    if (regex.test(e.target.value)) {
+      setPwValid(true);
+    } else {
+      setPwValid(false);
+    }
+  };
+
+  const useCallback = (e) => {
+    const currConfirmPwd = e.target.value;
+    setConfirmPwd(currConfirmPwd);
+
+    if (currConfirmPwd !== password) {
+      setConfirmPwdMsg("비밀번호가 일치하지 않습니다.")
+    } else {
+      setConfirmPwdMsg("올바른 비밀번호입니다.")
     }
   };
 
@@ -102,15 +126,15 @@ const Signin = () => {
           <L.InputTitle>Password</L.InputTitle>
           <L.InputWrap>
             <L.Input
-              type="text"
-              placeholder="덕새"
-              value={name}
-              onChange={handleName}
+                type="password"
+                placeholder="Enter your password"
+                value={pw}
+                onChange={handlePw}
             />
           </L.InputWrap>
           <L.ErrorMessageWrap>
-            {!nameValid && name.length > 0 && (
-              <div>2글자 이상 9글자 미만으로 입력해 주세요.</div>
+            {!pwValid && pw.length > 0 && (
+              <div>영문, 숫자, 특수기호 조합 8자리 이상의 비밀번호를 입력하세요.</div>
             )}
           </L.ErrorMessageWrap>
         </L.ContentWrap>
@@ -118,15 +142,15 @@ const Signin = () => {
           <L.InputTitle>Password Check</L.InputTitle>
           <L.InputWrap>
             <L.Input
-              type="text"
-              placeholder="덕새"
-              value={name}
-              onChange={handleName}
+              type="password"
+              placeholder="Enter your password"
+              value={pw}
+              onChange={handlePw}
             />
           </L.InputWrap>
           <L.ErrorMessageWrap>
-            {!nameValid && name.length > 0 && (
-              <div>2글자 이상 9글자 미만으로 입력해 주세요.</div>
+            {!pwValid && pw.length > 0 && (
+              <div></div>
             )}
           </L.ErrorMessageWrap>
         </L.ContentWrap>

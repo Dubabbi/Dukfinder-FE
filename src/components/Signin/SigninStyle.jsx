@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 export const TitleWrap = styled.div`
-  margin-top: 8%;
+  margin-top: 5%;
   font-size: 25px;
   font-weight: bold;
   text-align: center;
@@ -25,7 +25,7 @@ export const TextWrap = styled.div`
 export const BottomButton = styled.button`
   margin-left: 5%;
   width: 90%;
-  margin-top: 2%;
+  margin-top: 5%;
   height: 10%;
   border: none;
   font-weight: bold;
@@ -38,7 +38,7 @@ export const BottomButton = styled.button`
   &:disabled {
     margin-left: 5%;
     width: 90%;
-    margin-top: 2%;
+    margin-top: 5%;
     padding: 16px;
     height: 10%;
     border: none;
