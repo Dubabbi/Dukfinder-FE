@@ -102,9 +102,17 @@ export const BottomButton = styled.button`
   border-radius: 10px;
   background-color: #9e30f4;
   color: white;
+  font-size: 20px;
   cursor: pointer;
 
   &:disabled {
+    margin-left: 5%;
+    margin-top: 8%;
+    width: 90%;
+    padding: 16px;
+    height: 10%;
+    border: none;
+    font-weight: bold;
     background-color: #FFE665;
     font-size: 20px;
     color: #0d0d0d;
