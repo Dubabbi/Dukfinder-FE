@@ -50,7 +50,7 @@ const Login = () => {
     } else {
       alert('등록되지 않은 회원입니다.');
     }
-  };// 알파벳, 숫자, 특수 문자 외의 다른 문자가 없어야 함. 총 길이가 8에서 20 사이여야 함. 알파벳, 숫자, 특수 문자가 각각 한 개 이상 들어가 있어야 함.
+  };
 
   return (
     <L.LoginWrapper>
@@ -105,5 +105,5 @@ const Login = () => {
     </L.LoginWrapper>
   );
 };
-
+ 
 export default Login;

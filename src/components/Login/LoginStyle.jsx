@@ -51,7 +51,6 @@ export const LostPwMessage = styled.div`
   width: 90%;
   color: red;
   font-size: 14px;
-  // 추가한 부분: text-align을 right로 설정하여 텍스트를 오른쪽 정렬
   text-align: right;
 `;
 
