@@ -14,7 +14,6 @@ export const TitleWrap = styled.div`
   }
 `;
 
-
 export const TextWrap = styled.div`
   margin-bottom: 2%;
   font-size: 15px;
