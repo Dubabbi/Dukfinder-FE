@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import * as L from './LoginStyle';
 
 const User = {
-  email: 'test@example.com',
+  email: 'test@duksung.ac.kr',
   pw: 'test2323@@@',
 };
 
@@ -65,7 +65,7 @@ const Login = () => {
         <L.InputWrap>
           <L.Input
             type="text"
-            placeholder="test@gmail.com"
+            placeholder="test@duksung.ac.kr"
             value={email}
             onChange={handleEmail}
           />
