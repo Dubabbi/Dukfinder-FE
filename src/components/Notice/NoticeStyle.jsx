@@ -123,6 +123,7 @@ export const BoardTable = styled.table`
 
 export const TableHead = styled.thead`
   text-align: center;
+  font-weight: bold;
 `
 
 export const TableBody = styled.tbody`
