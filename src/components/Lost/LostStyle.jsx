@@ -1,14 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Card } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { FaCalendarAlt } from 'react-icons/fa';
 
-export const FindWrapper = styled.div`
+export const LostWrapper = styled.div`
     color: black;
     font-size: 35px;
     margin: 0px auto;
-
-    
 `
 
 export const Title=styled.div`
@@ -50,7 +49,6 @@ export const NoticeTitle=styled.div`
 export const Post_Container = styled.div`
     display : flex;
     flex-wrap : wrap;
-   
     font-size: 14px;
     margin: 16px;
     
@@ -61,6 +59,7 @@ export const CardStyle = styled(Card)`
     margin: 16px;
     border: 2px solid gray;
 `
+
 export const CardImgStyle = styled(Card.Img)`
     border-radius: 15px 15px 0px 0px;
 `
@@ -72,7 +71,6 @@ export const YellowCardBody = styled(Card.Body)`
     flex-direction: column;
     max-height: calc(100% - 150px); 
     border-radius: 0px 0px 15px 15px;
-   
 `;
 
 export const CardTitle=styled(Card.Title)`
@@ -96,12 +94,6 @@ export const TruncatedContent = styled(Card.Text)`
     font-size: 15px;
 `;
 
-export const LinkStyle = styled(Card.Link)`
-    font-weight: bold;
-    padding: 5px 10px;
-    text-decoration: underline;
-    text-align: right;
-`
 
 export const TimeContainer = styled(Card.Subtitle)`
     padding: 6px;
@@ -114,4 +106,12 @@ export const LinkTimeGroup = styled.div`
     justify-content: space-between;
     
 `
+
+export const LinkStyle = styled(Card.Link)`
+    font-weight: bold;
+    padding: 5px 10px;
+    text-decoration: underline;
+    text-align: right;
+`
+
 

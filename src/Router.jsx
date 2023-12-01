@@ -2,11 +2,13 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import MainPage from './pages/Main';
 import LostPage from './pages/Lost';
 import FindPage from './pages/Find';
+import FindDetailPage from './pages/FindDetail';
 import NoticePage from './pages/Notice';
 import Mypage from './pages/Mypage';
 import LoginPage from './pages/Login';
 import SigninPage from './pages/Signin';
 import UploadPage from './pages/Upload';
+import LostDetailPage from './pages/LostDetail';
 
 export default function Router() {
     return (
@@ -15,7 +17,9 @@ export default function Router() {
                 <Routes>
                     <Route path="/" element={<MainPage />}/>
                     <Route path="/lost" element={<LostPage />}/>
+                    <Route path="/lost/:p_id" element={<LostDetailPage/>}/>
                     <Route path="/find" element={<FindPage />}/>
+                    <Route path="/find/:p_id" element={<FindDetailPage/>}/>
                     <Route path="/notice" element={<NoticePage />}/>
                     <Route path="/mypage" element={<Mypage />}/>
                     <Route path="/login" element={<LoginPage />}/>
