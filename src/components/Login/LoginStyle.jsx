@@ -111,6 +111,7 @@ export const BottomButton = styled.button`
     padding: 16px;
     height: 10%;
     border: none;
+    border-radius: 10px;
     font-weight: bold;
     background-color: #FFE665;
     font-size: 20px;
