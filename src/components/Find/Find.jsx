@@ -36,7 +36,7 @@ function Find() {
                 주인을 찾아요!
                 <F.NoticeTitle>
                     <span>UPDATE</span>
-                    <Link to="/your-link-here">공지 - 게시글 작성 방법 안내</Link>
+                    <Link to="/notice">공지 - 게시글 작성 방법 안내</Link>
                 </F.NoticeTitle>
                 <DateFilter />
             </F.Title>
