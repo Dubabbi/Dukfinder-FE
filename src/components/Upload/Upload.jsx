@@ -1,51 +1,66 @@
-//Upload.jsx
-import * as U from './UploadStyle';
+// ContactForm.js
+import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import * as L from '../Login/LoginStyle';
 import * as M from '../Main/MainStyle';
 import * as N from '../Notice/NoticeStyle';
+import * as U from './UploadStyle';
+import * as S from '../Signin/SigninStyle';
 
-export default function Upload() {
-    return (
-        <M.MainWrapper>
-        <N.Section>
-          <N.PageTitle>
-            <N.TitleText>작성 페이지</N.TitleText>
-          </N.PageTitle>
-        <U.InputTitle>제목 (물건명)</U.InputTitle>
-        <U.InputWrap>
-          <U.Input
-            type="text"
-            placeholder=""
-          />
-        </U.InputWrap>
-        <U.InLine>
-            <div>
-                <U.InputTitleInLine>장소</U.InputTitleInLine>
-                <U.InputWrapInLine>
-                <U.Input type="text" placeholder="" />
-                </U.InputWrapInLine>
-            </div>
-            <div>
-                <U.InputTitleInLine>분류</U.InputTitleInLine>
-                <U.InputWrapInLine>
-                <U.Input type="text" placeholder="" />
-                </U.InputWrapInLine>
-            </div>
-            <div>
-                <U.InputTitleInLine>일자</U.InputTitleInLine>
-                <U.InputWrapInLine>
-                <U.Input type="text" placeholder="" />
-                </U.InputWrapInLine>
-            </div>
-        </U.InLine>
 
-        <U.InputTitle>내용</U.InputTitle>
-        <U.InputWrap>
-          <U.Input
-            type="text"
-            placeholder=""
-          />
-        </U.InputWrap>
-        </N.Section>
-        </M.MainWrapper>
-    );
-}
+const ContactForm = () => {
+  return (
+    <M.MainWrapper>
+      <N.Section>
+        <N.PageTitle>
+          <N.TitleText>작성 페이지</N.TitleText>
+        </N.PageTitle>
+        <U.Wrapper>
+          <U.Form action="#">
+            <table>
+              <tr>
+                <td colspan = '3'>
+                  <U.FormGroup>
+                    <U.Label htmlFor="name">Name</U.Label>
+                    <U.Input type="text" id="name" name="your-name" />
+                  </U.FormGroup>
+                </td>
+              </tr>
+              <tr>
+              <td>
+                    <U.Label htmlFor="email">Mail address</U.Label>
+                    <U.Input type="text" id="email" name="your-email" />
+              </td>
+              <td>
+                    <U.Label htmlFor="email">Mail address</U.Label>
+                    <U.Input type="text" id="email" name="your-email" />
+              </td>
+              <td>
+                    <U.Label htmlFor="email">Mail address</U.Label>
+                    <U.Input type="text" id="email" name="your-email" />
+              </td>
+              </tr>
+              <tr>
+              <td colspan = '3'>
+                    <U.Label htmlFor="message">Message</U.Label>
+                    <U.Textarea type="text" id="message" name="your-message"></U.Textarea>
+              </td>
+              </tr>
+              <tr>
+              <td colspan = '3'>
+                  <U.Inline>
+                    <U.Label htmlFor="image">이미지</U.Label>
+                    <U.ImgButton onClick>파일선택</U.ImgButton>
+                  </U.Inline>
+              </td>
+              </tr>
+            </table>
+            <U.SubmitButton />
+          </U.Form>
+        </U.Wrapper>
+      </N.Section>
+    </M.MainWrapper>
+  );
+};
+
+export default ContactForm;
