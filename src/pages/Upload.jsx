@@ -1,3 +1,5 @@
+import Upload from './../components/Upload/Upload';
+
 export default function UploadPage() {
-    return <>글 작성 페이지</>;
+    return <><Upload/></>;
 }
