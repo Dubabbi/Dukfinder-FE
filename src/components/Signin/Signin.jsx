@@ -107,9 +107,11 @@ const Signin = () => {
             🐤Dukfinder🐤에서 다양한 경험을<br />시작해 보세요!<br />
             버튼을 누르면 메인 화면으로 이동합니다.
           </S.TextWrap></L.ContentWrap>
+          <a href='/'>
             <S.BottomButton onClick>
-                <a href='/'>확인</a>
+                확인
             </S.BottomButton>
+            </a>
           
           </div>
         ) : ( 
