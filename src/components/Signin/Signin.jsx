@@ -9,96 +9,125 @@ const User = {
 };
 
 const Signin = () => {
-  const [email, setEmail] = useState('');
-  const [emailValid, setEmailValid] = useState(false);
-  const [pw, setPw] = useState('');
-  const [pwValid, setPwValid] = useState(false);
-  const [name, setName] = useState('');
-  const [nameValid, setNameValid] = useState(false);
-  const [notAllow, setNotAllow] = useState(true);
-  const [random, setRandom] = useState("000000");
 
-  // 랜덤 문자열을 생성하는 함수
-  const generateRandom = () => {
-    const randomValue = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
-    setRandom(randomValue);
-  };
+    const [email, setEmail] = useState('');
+    const [emailValid, setEmailValid] = useState(false);
+    const [pw, setPw] = useState('');
+    const [pwValid, setPwValid] = useState(false);
+    const [name, setName] = useState('');
+    const [nameValid, setNameValid] = useState(false);
+    const [notAllow, setNotAllow] = useState(true);
+    const [random, setRandom] = useState("000000");
+    const [signupComplete, setSignupComplete] = useState(false); 
+    const [showWelcomeMessage, setShowWelcomeMessage] = useState(false); 
+    const [confirmPw, setConfirmPw] = useState(''); 
 
-  useEffect(() => {
-    if (emailValid) {
-      setNotAllow(false);
-      return;
-    }
-    setNotAllow(true);
-  }, [emailValid]);
+    const handleConfirmPw = (e) => { 
+      setConfirmPw(e.target.value); 
+    }; 
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value);
-    const regex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
-    if (regex.test(e.target.value)) {
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
-  };
 
-  const handleName = (n) => {
-    setName(n.target.value);
-    const regex =
-      /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|].{1,8}$/i;
+    const [confirmPwMsg, setConfirmPwMsg] = useState(''); 
+  
+    useEffect(() => { 
+      if (confirmPw.length >= 1) { 
+        if (confirmPw === pw) {
+          setConfirmPwMsg('비밀번호가 일치합니다.');
+        } else {
+          setConfirmPwMsg('비밀번호가 일치하지 않습니다.');
+        }
+      } else {
+        setConfirmPwMsg(''); 
+      }
+    }, [confirmPw, pw]);
+
+    const generateRandom = () => {
+      const randomValue = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
+      setRandom(randomValue);
+      setSignupComplete(true);
+    };
+  
+    const handleName = (n) => {
+      setName(n.target.value);
+      const regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|].{1,8}$/i;
       if (regex.test(n.target.value)) {
-      setNameValid(true);
-    } else {
-      setNameValid(false);
-    }
-  };
-
-  const handlePw = (e) => {
-    setPw(e.target.value);
-    const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-    if (regex.test(e.target.value)) {
-      setPwValid(true);
-    } else {
-      setPwValid(false);
-    }
-  };
-
-  const useCallback = (e) => {
-    const currConfirmPwd = e.target.value;
-    setConfirmPwd(currConfirmPwd);
-
-    if (currConfirmPwd !== password) {
-      setConfirmPwdMsg("비밀번호가 일치하지 않습니다.")
-    } else {
-      setConfirmPwdMsg("올바른 비밀번호입니다.")
-    }
-  };
+        setNameValid(true);
+      } else {
+        setNameValid(false);
+      }
+    };
+  
+    const handleEmail = (e) => {
+      setEmail(e.target.value);
+      const regex =
+        /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+      if (regex.test(e.target.value)) {
+        setEmailValid(true);
+      } else {
+        setEmailValid(false);
+      }
+    };
+  
+    const handlePw = (e) => {
+      setPw(e.target.value);
+      const regex =
+        /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+      if (regex.test(e.target.value)) {
+        setPwValid(true);
+      } else {
+        setPwValid(false);
+      }
+    };
+  
+    useEffect(() => {
+      if (emailValid) {
+        setNotAllow(false);
+        return;
+      }
+      setNotAllow(true);
+    }, [emailValid]);
+  
+    useEffect(() => {
+      if (signupComplete) {
+        setShowWelcomeMessage(true);
+      }
+    }, [signupComplete]);
 
   return (
     <L.LoginWrapper>
       <L.Page>
-        <S.TitleWrap>
+        {showWelcomeMessage ? ( 
+          <div>
+          <L.TitleWrap>
+          <p>[덕새]님<br />환영합니다!</p>
+          </L.TitleWrap>
+          <L.ContentWrap>
+            <S.TextWrap>
+            가입을 완료했습니다.<br />
+            🐤Dukfinder🐤에서 다양한 경험을<br />시작해 보세요!<br />
+            버튼을 누르면 메인 화면으로 이동합니다.
+          </S.TextWrap></L.ContentWrap>
+            <S.BottomButton onClick>
+                <a href='/'>확인</a>
+            </S.BottomButton>
+          
+          </div>
+        ) : ( 
+          <div>
+          <L.TitleWrap>
           <p>회원가입</p>
-        </S.TitleWrap>
+        </L.TitleWrap>
         {/* 🦆 */}
         <L.ContentWrap>
-          {/* <S.TextWrap>
-            덕성여자대학교 소속임을 확인하기 위해<br />
-            이메일 인증코드를 보내드립니다.<br />
-            덕성여자대학교 이메일만 입력 가능하오니<br />
-            덕성여자대학교 이메일을 입력하고 인증을 완료해 주세요.
-          </S.TextWrap> */}
           <L.InputTitle>Username</L.InputTitle>
-          <L.InputWrap>
-            <L.Input
+          <S.InputWrap>
+            <S.Input
               type="text"
               placeholder="덕새"
               value={name}
               onChange={handleName}
             />
-          </L.InputWrap>
+          </S.InputWrap>
           <L.ErrorMessageWrap>
             {!nameValid && name.length > 0 && (
               <div>2글자 이상 9글자 미만으로 입력해 주세요.</div>
@@ -107,14 +136,14 @@ const Signin = () => {
           </L.ContentWrap>
           <L.ContentWrap>
           <L.InputTitle>Email (덕성 이메일 입력)</L.InputTitle>
-          <L.InputWrap>
-            <L.Input
+          <S.InputWrap>
+            <S.Input
               type="text"
               placeholder="test@duksung.ac.kr"
               value={email}
               onChange={handleEmail}
             />
-          </L.InputWrap>
+          </S.InputWrap>
 
           <L.ErrorMessageWrap>
             {!emailValid && email.length > 0 && (
@@ -124,14 +153,14 @@ const Signin = () => {
           </L.ContentWrap>
           <L.ContentWrap>
           <L.InputTitle>Password</L.InputTitle>
-          <L.InputWrap>
-            <L.Input
+          <S.InputWrap>
+            <S.Input
                 type="password"
                 placeholder="Enter your password"
                 value={pw}
                 onChange={handlePw}
             />
-          </L.InputWrap>
+          </S.InputWrap>
           <L.ErrorMessageWrap>
             {!pwValid && pw.length > 0 && (
               <div>영문, 숫자, 특수기호 조합 8자리 이상의 비밀번호를 입력하세요.</div>
@@ -140,28 +169,28 @@ const Signin = () => {
         </L.ContentWrap>
         <L.ContentWrap>
           <L.InputTitle>Password Check</L.InputTitle>
-          <L.InputWrap>
-            <L.Input
-              type="password"
-              placeholder="Enter your password"
-              value={pw}
-              onChange={handlePw}
+          <S.InputWrap>
+            <S.Input
+            type="password"
+            placeholder="Re-enter your password"
+            value={confirmPw}
+            onChange={handleConfirmPw}
             />
-          </L.InputWrap>
+          </S.InputWrap>
+          <L.ErrorMessageWrap>
+                {confirmPwMsg && <div>{confirmPwMsg}</div>}
+              </L.ErrorMessageWrap>
           <L.ErrorMessageWrap>
             {!pwValid && pw.length > 0 && (
               <div></div>
             )}
           </L.ErrorMessageWrap>
         </L.ContentWrap>
-
-        <div>
-          <S.BottomButton onClick={generateRandom} disabled={notAllow}>
-            <a href='./Verification'>
-              인증코드 보내기
-            </a>
-            </S.BottomButton>
-        </div>
+            <L.BottomButton onClick={generateRandom} disabled={notAllow}>
+                {signupComplete ? '인증코드 보내기' : '인증코드 보내기'}
+            </L.BottomButton>
+          </div>
+        )}
       </L.Page>
     </L.LoginWrapper>
   );
