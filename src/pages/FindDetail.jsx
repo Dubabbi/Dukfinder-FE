@@ -1,14 +1,13 @@
-import Find from '../components/Find/Find';
+import FindDetail from '../components/FindDetail/FindDetail';
 import Container from 'react-bootstrap/Container';
 import Layout from '../Layout/Layout';
 
-
-export default function FindPage() {
+export default function FindDetailPage() {
     return (
         <>
             <Layout>
                 <Container style={{ minHeight: '75vh' }}>
-                    <Find />
+                    <FindDetail/>
                 </Container>
             </Layout>
         </>
