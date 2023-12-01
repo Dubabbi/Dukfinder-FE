@@ -26,7 +26,7 @@ const ContactForm = () => {
                   </U.FormGroup>
                 </td>
               </tr>
-              <tr>
+              <tr> 
               <td>
                     <U.Label htmlFor="email">Mail address</U.Label>
                     <U.Input type="text" id="email" name="your-email" />
