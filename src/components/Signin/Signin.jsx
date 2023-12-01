@@ -1,5 +1,6 @@
 // Signin.jsx
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import * as L from '../Login/LoginStyle';
 import * as S from './SigninStyle';
 
@@ -28,7 +29,9 @@ const Signin = () => {
 
 
     const [confirmPwMsg, setConfirmPwMsg] = useState(''); 
-  
+
+
+
     useEffect(() => { 
       if (confirmPw.length >= 1) { 
         if (confirmPw === pw) {
@@ -41,11 +44,7 @@ const Signin = () => {
       }
     }, [confirmPw, pw]);
 
-    const generateRandom = () => {
-      const randomValue = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
-      setRandom(randomValue);
-      setSignupComplete(true);
-    };
+
   
     const handleName = (n) => {
       setName(n.target.value);
@@ -60,7 +59,7 @@ const Signin = () => {
     const handleEmail = (e) => {
       setEmail(e.target.value);
       const regex =
-        /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+      /^(?=.*[a-zA-Z]).*duksung\.ac\.kr$/;
       if (regex.test(e.target.value)) {
         setEmailValid(true);
       } else {
@@ -80,18 +79,24 @@ const Signin = () => {
     };
   
     useEffect(() => {
-      if (emailValid) {
+      if (nameValid && emailValid && pwValid && confirmPw === pw) {
         setNotAllow(false);
         return;
       }
       setNotAllow(true);
-    }, [emailValid]);
+    }, [emailValid], [nameValid], [pwValid], [confirmPw]);
   
     useEffect(() => {
       if (signupComplete) {
         setShowWelcomeMessage(true);
       }
     }, [signupComplete]);
+    
+    const generateRandom = () => {
+      const randomValue = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
+      setRandom(randomValue);
+      setSignupComplete(true);
+    };
 
   return (
     <L.LoginWrapper>
@@ -188,7 +193,7 @@ const Signin = () => {
             )}
           </L.ErrorMessageWrap>
         </L.ContentWrap>
-            <L.BottomButton onClick={generateRandom} disabled={notAllow}>
+          <L.BottomButton onClick={generateRandom} disabled={notAllow}>
                 {signupComplete ? '인증코드 보내기' : '인증코드 보내기'}
             </L.BottomButton>
           </div>

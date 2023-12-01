@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import * as M from '../Main/MainStyle';
 import * as N from './NoticeStyle';
 
