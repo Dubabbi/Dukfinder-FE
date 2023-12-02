@@ -7,10 +7,13 @@ import Mypage from './pages/Mypage';
 import LoginPage from './pages/Login';
 import SigninPage from './pages/Signin';
 import UploadPage from './pages/Upload';
+import Nav from './components/Navbar/Nav';
+import Footer from './components/Footer/Footer';
 
 export default function Router() {
     return (
         <>
+            <Nav/>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<MainPage />}/>
@@ -23,6 +26,7 @@ export default function Router() {
                     <Route path="/upload" element={<UploadPage />}/>
                 </Routes>
             </BrowserRouter>
+            <Footer/>
         </>
     );
 }
