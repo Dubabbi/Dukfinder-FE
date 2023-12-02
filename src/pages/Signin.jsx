@@ -1,3 +1,5 @@
+import Signin from './../components/Signin/Signin';
+
 export default function SigninPage() {
-    return <>회원가입 페이지</>;
+    return <><Signin/></>;
 }
