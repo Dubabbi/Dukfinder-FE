@@ -1,27 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { noticeData } from '../../noticeData';
-import * as D from './NoticeDetailStyle';
-import * as M from '../Main/MainStyle';
 import * as N from '../Notice/NoticeStyle';
-import { Link } from 'react-router-dom';
+import * as D from './NoticeDetailStyle';
 
 function NoticeDetail(props) {
     const { n_id } = useParams();
     const notice = noticeData.results.find(notice => notice.n_id === n_id);
+
+    // notice가 존재하지 않는 경우에 대한 예외 처리
+    if (!notice) {
+        return <div>해당 공지사항을 찾을 수 없습니다.</div>;
+    }
+
+    const { n_title, n_content } = notice;
+
     return (
-        <M.MainWrapper>
-        <N.Section>
-          <N.PageTitle>
-            <N.TitleText>공지사항</N.TitleText>
-          </N.PageTitle>
-                    
-           <N.PageTitle><hr />{n_title}<hr /></N.PageTitle>
-                    
-           <div>{n_content}</div>
-           <button as={Link} to={`../notice`}>목록으로</button>
+        <N.NoticeWrapper>
+            <N.Section>
+                <N.PageTitle>
+                    <N.TitleText>공지사항</N.TitleText>
+                </N.PageTitle>
+                <D.TitleWrap><hr />
+                <D.DetailTitle>
+                
+                    {n_title}
+                  
+                </D.DetailTitle> <hr />                  
+                </D.TitleWrap>
+                <D.TextWrap>{n_content}</D.TextWrap>
+                <button as={Link} to="../notice">목록으로</button>
             </N.Section>
-        </M.MainWrapper>
+        </N.NoticeWrapper>
     );
-  }
-  
-  export default NoticeDetail;
+}
+
+export default NoticeDetail;
