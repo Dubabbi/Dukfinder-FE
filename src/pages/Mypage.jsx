@@ -1,3 +1,5 @@
+import MyPage from './../components/Mypage/Mypage';
+
 export default function Mypage() {
-    return <>마이페이지</>;
+    return <><MyPage/></>;
 }
