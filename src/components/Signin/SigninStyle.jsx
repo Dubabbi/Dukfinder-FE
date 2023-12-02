@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 export const TitleWrap = styled.div`
-  margin-top: 5%;
+  margin-top: 3%;
   font-size: 25px;
   font-weight: bold;
   text-align: center;
@@ -63,4 +63,17 @@ background-color: #FFE665;
 font-size: 20px;
 color: #0d0d0d;
 border-radius: 10px;
+&:disabled {
+  margin-left: 5%;
+  margin-top: 8%;
+  width: 90%;
+  padding: 16px;
+  height: 10%;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #FFE665;
+  font-size: 20px;
+  color: #0d0d0d;
+}
 `;

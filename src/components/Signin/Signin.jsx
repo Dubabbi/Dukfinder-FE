@@ -30,6 +30,12 @@ const Signin = () => {
 
     const [confirmPwMsg, setConfirmPwMsg] = useState(''); 
 
+    const onClickConfirmButton = () => {
+      if (nameValid && emailValid && pwValid && confirmPw === pw) {
+        generateRandom();
+      }
+    };
+    
 
 
     useEffect(() => { 
@@ -98,6 +104,15 @@ const Signin = () => {
       setSignupComplete(true);
     };
 
+
+    useEffect(() => {
+      if (nameValid && emailValid && pwValid && confirmPw === pw) {
+        setNotAllow(false);
+        return;
+      }
+      setNotAllow(true);
+    }, [nameValid, emailValid, pwValid, confirmPw, pw]);
+    
   return (
     <L.LoginWrapper>
       <L.Page>
@@ -193,7 +208,7 @@ const Signin = () => {
             )}
           </L.ErrorMessageWrap>
         </L.ContentWrap>
-          <L.BottomButton onClick={generateRandom} disabled={notAllow}>
+          <L.BottomButton onClick={onClickConfirmButton} disabled={notAllow}>
                 {signupComplete ? '인증코드 보내기' : '인증코드 보내기'}
             </L.BottomButton>
           </div>
