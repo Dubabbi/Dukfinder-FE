@@ -1,3 +1,5 @@
+import Notice from './../components/Notice/Notice';
+
 export default function NoticePage() {
-    return <>공지사항 페이지</>;
+    return <><Notice/></>;
 }

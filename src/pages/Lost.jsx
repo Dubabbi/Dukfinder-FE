@@ -1,3 +1,16 @@
+import Lost from '../components/Lost/Lost';
+import {data} from '../postData';
+import Container from 'react-bootstrap/Container';
+import Layout from '../Layout/Layout';
+
 export default function LostPage() {
-    return <>잃어버렸나요? 페이지</>;
+    return (
+        <>
+            <Layout>
+                <Container style={{ minHeight: '75vh' }}>
+                    <Lost />
+                </Container>
+            </Layout>
+        </>
+    );
 }
