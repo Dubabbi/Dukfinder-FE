@@ -6,7 +6,6 @@ import axios from 'axios';
 import * as L from './LoginStyle';
 
 const Login = () => {
-  const baseURL = "https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/login";
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
 
@@ -49,7 +48,7 @@ const Login = () => {
   const onClickConfirmButton = async () => {
     try {
       const response = await axios.post(
-        'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/login/',
+        'http://127.0.0.1:8000/user/login/',
         {
           email: email,
           password: pw,
@@ -77,13 +76,13 @@ const Login = () => {
   
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        // 가입되지 않은 사용자의 경우
+        // 가입되지 않은 사용자
         alert('등록되지 않은 회원입니다.');
       } else if (error.response && error.response.status === 401) {
-        // 인증 실패의 경우
+        // 인증 실패
         alert('인증에 실패하였습니다. 이메일과 비밀번호를 확인하세요.');
       } else {
-        // 기타 오류의 경우
+        // 기타 오류
         alert('로그인에 실패했습니다.');
       }
       console.error('에러:', error.response ? error.response.data.error : error.message);
