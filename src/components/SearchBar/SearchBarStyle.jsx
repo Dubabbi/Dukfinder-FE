@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 export const Search_Container=styled.div`
-    margin: 60px 200px;
+    margin: 60px;
     display: flex;
     justify-content: center;
 `

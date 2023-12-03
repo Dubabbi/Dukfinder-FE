@@ -16,8 +16,8 @@ import LostDetailPage from './pages/LostDetail';
 export default function Router() {
     return (
         <>
-            <Nav/>
             <BrowserRouter>
+            <Nav/>
                 <Routes>
                     <Route path="/" element={<MainPage />}/>
                     <Route path="/lost" element={<LostPage />}/>
