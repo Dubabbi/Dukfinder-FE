@@ -120,6 +120,7 @@ export const BoardTable = styled.table`
   width: 100%;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  border: 2px solid #111;
 `
 
 export const TableHead = styled.thead`
