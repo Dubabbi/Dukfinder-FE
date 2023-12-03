@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as L from './LoginStyle';
 
-
 const Login = () => {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
@@ -13,56 +12,49 @@ const Login = () => {
   const [notAllow, setNotAllow] = useState(true);
 
   useEffect(() => {
-    // Check both email and password conditions
     if (emailValid && pwValid) {
       setNotAllow(false);
     } else {
       setNotAllow(true);
     }
   }, [emailValid, pwValid]);
-  
+
   const handleEmail = (e) => {
     setEmail(e.target.value);
-    const regex =
-    /^(?=.*[a-zA-Z]).*duksung\.ac\.kr$/;
-    if (regex.test(e.target.value)) {
-      setEmailValid(true);
-    } else {
-      setEmailValid(false);
-    }
+    const regex = /^(?=.*[a-zA-Z]).*duksung\.ac\.kr$/;
+    setEmailValid(regex.test(e.target.value));
   };
 
   const handlePw = (e) => {
     setPw(e.target.value);
-    const regex =
-      /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
-    if (regex.test(e.target.value)) {
-      setPwValid(true);
-    } else {
-      setPwValid(false);
-    }
+    const regex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$`~!@$!%*#^?&\\(\\)\-_=+])(?!.*[^a-zA-z0-9$`~!@$!%*#^?&\\(\\)\-_=+]).{8,20}$/;
+    setPwValid(regex.test(e.target.value));
   };
 
   const onClickConfirmButton = async () => {
     try {
-      // Axios를 사용하여 API 호출
-      const response = await axios.post('/user/login/', {
-        email: email, 
-        password: pw,
-      });
+      const response = await axios.post(
+        '/user/login/',
+        {
+          email: email,
+          password: pw,
+        },
+        { withCredentials: true } // Add this option to send cookies
+      );
 
-      // 로그인 성공
       alert('로그인에 성공했습니다.');
       console.log('토큰:', response.data.token);
+      history.push('/main');
 
-      // 토큰을 상태에 저장하거나 필요한 대로 사용
     } catch (error) {
-      // 로그인 실패
-      alert('등록되지 않은 회원입니다.');
-      console.error('에러:', error.response.data.error);
+      if (error.response && error.response.status === 400) {
+        alert('등록되지 않은 회원입니다.');
+      } else {
+        alert('로그인에 실패했습니다.');
+      }
+      console.error('에러:', error.response ? error.response.data.error : error.message);
     }
   };
-
   
   return (
     <L.LoginWrapper>
