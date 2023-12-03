@@ -18,8 +18,9 @@ export const Title = styled.div`
     font-size: 4vw;
     font-weight: bold;
     position: relative;
-    margin-left: 2vw;
-    margin-right: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const Bell = styled(PiBell)`

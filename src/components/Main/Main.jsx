@@ -1,7 +1,7 @@
-import SearchBar from './SearchBar';
 import * as M from './MainStyle';
 import { PiBell } from "react-icons/pi";
 import Card from './Card';
+import SearchBar from './../SearchBar/SearchBar';
 
 export default function Main() {
     return (
@@ -10,9 +10,9 @@ export default function Main() {
                 <M.Header>
                     <M.Title>Dukfinder</M.Title>
                     <SearchBar/>
-                    <M.Bell>
+                    {/* <M.Bell>
                         <PiBell size={65} stroke="black" fill="black" strokeWidth="3"/>
-                    </M.Bell>
+                    </M.Bell> */}
                 </M.Header>
 
                 <M.SubTitleWrapper>
