@@ -97,10 +97,12 @@ const Signin = () => {
         });
         console.log('사용자 등록 성공:', response.data);
         setShowWelcomeMessage(true);
-
+        registerUser(); // Call registerUser here if the conditions are met
+        console.log('하단 버튼이 클릭되었습니다.');
       } else {
         console.error('등록 실패: 입력값이 올바르지 않습니다.');
       }
+
     } catch (error) {
       if (error.response) {
         console.error('등록 실패:', error.response.data.error);
@@ -110,7 +112,7 @@ const Signin = () => {
     }
 
     console.log('하단 버튼이 클릭되었습니다.');
-    navigate('/');
+
   };
 
   useEffect(() => {
@@ -127,7 +129,7 @@ const Signin = () => {
     }
   }, [signupComplete]);
 
-
+ 
   return (
     <L.LoginWrapper>
       <L.Page>
@@ -143,7 +145,7 @@ const Signin = () => {
                 버튼을 누르면 메인 화면으로 이동합니다.
               </S.TextWrap>
             </L.ContentWrap>
-            <a href='/user/login'>
+            <a href='/'>
               <S.BottomButton onClick>
                 확인
               </S.BottomButton>
