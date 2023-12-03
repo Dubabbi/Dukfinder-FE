@@ -66,7 +66,7 @@ const Signin = () => {
 
   const registerUser = async () => {
     try {
-      const response = await axios.post('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/register/', {
+      const response = await axios.post('http://127.0.0.1:8000/user/register/', {
         username: name,
         email: email,
         password: pw,
@@ -89,7 +89,7 @@ const Signin = () => {
   const onClickConfirmButton = async () => {
     try {
       if (nameValid && emailValid && pwValid && confirmPw === pw) {
-        const response = await axios.post('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/register/', {
+        const response = await axios.post('http://127.0.0.1:8000/user/register/', {
           username: name,
           email: email,
           password: pw,
@@ -110,7 +110,7 @@ const Signin = () => {
     }
 
     console.log('하단 버튼이 클릭되었습니다.');
-    navigate('/login');
+    navigate('/');
   };
 
   useEffect(() => {
@@ -231,7 +231,7 @@ const Signin = () => {
               </L.ErrorMessageWrap>
             </L.ContentWrap>
             <L.BottomButton onClick={onClickConfirmButton} disabled={notAllow}>
-              {signupComplete ? '회원가입' : '회원가입'}
+              {signupComplete ? '완료' : '완료'}
             </L.BottomButton>
           </div>
         </form>
