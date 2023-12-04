@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate }  from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import * as D from "./LostDetailStyle";
@@ -7,14 +8,29 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function LostDetailCard(props) {
-    const { p_id } = useParams();
-    const post = data.results.find(post => post.p_id === p_id);
+function LostDetailCard({post}) {
+    // const { p_id } = useParams();
+    // const post = data.results.find(post => post.p_id === p_id);
+   
+    const navigate = useNavigate();
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleDelete = () => {
+        deletePost(post.p_id);
+
+        console.log('포스트를 삭제합니다:', post.p_id);
+        handleClose();
+        navigate('/lost');// 목록 페이지로 이동
+    };
+
+    const deletePost = (postId) => {
+        const updatedData = data.results.filter(item => item.p_id !== postId);
+        data.results = updatedData; // 가상의 data 객체 업데이트 (실제로는 데이터베이스 등에 반영해야 함)
+    };
 
     return (
         <D.CardStyle style={{ width: '65rem' }}>
@@ -30,7 +46,7 @@ function LostDetailCard(props) {
                             <D.ModalCloseButton variant="secondary" onClick={handleClose}>
                                 취소
                             </D.ModalCloseButton>
-                            <D.ModalButton variant="warning" onClick={handleClose}>
+                            <D.ModalButton variant="warning" onClick={handleDelete}>
                                 삭제하기
                             </D.ModalButton>
                         </Modal.Footer>

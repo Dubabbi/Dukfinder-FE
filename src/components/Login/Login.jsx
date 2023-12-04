@@ -1,6 +1,8 @@
 // Login.jsx
 
 import { useNavigate } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as L from './LoginStyle';
@@ -8,18 +10,19 @@ import * as L from './LoginStyle';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
-
+  const [name, setName] = useState('');
+  const [nameValid, setNameValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
 
   useEffect(() => {
-    if (emailValid && pwValid) {
+    if (nameValid && pwValid) {
       setNotAllow(false);
       return;
     }
     setNotAllow(true);
-  }, [emailValid, pwValid]);
+  }, [nameValid, pwValid]);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
