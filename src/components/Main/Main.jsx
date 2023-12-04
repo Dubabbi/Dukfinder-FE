@@ -1,6 +1,6 @@
 import * as M from './MainStyle';
-import { PiBell } from "react-icons/pi";
-import Card from './Card';
+import FindCard from './FindCards';
+import LostCard from './LostCards'
 import SearchBar from './../SearchBar/SearchBar';
 
 export default function Main() {
@@ -10,22 +10,19 @@ export default function Main() {
                 <M.Header>
                     <M.Title>Dukfinder</M.Title>
                     <SearchBar/>
-                    {/* <M.Bell>
-                        <PiBell size={65} stroke="black" fill="black" strokeWidth="3"/>
-                    </M.Bell> */}
                 </M.Header>
 
                 <M.SubTitleWrapper>
-                    <M.SubTitle>주인을 찾아요!</M.SubTitle>
-                    <M.SubTitle>잃어버렸어요!</M.SubTitle>
+                <M.SubTitle><a href="/find">주인을 찾아요!</a></M.SubTitle>
+                <M.SubTitle><a href="/lost">잃어버렸어요!</a></M.SubTitle>
                 </M.SubTitleWrapper>
                  
                 <M.SubWrapper>
                     <M.CardWrapper>
-                        <Card />
+                        <FindCard />
                     </M.CardWrapper>
-                <M.CardWrapper>
-                        <Card />
+                    <M.CardWrapper>
+                        <LostCard />
                     </M.CardWrapper>
                 </M.SubWrapper>
 

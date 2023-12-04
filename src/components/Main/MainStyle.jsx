@@ -33,6 +33,7 @@ export const Bell = styled(PiBell)`
 export const SubTitleWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    flex-direction: nowrap;
     width: 100%;
 `
 
@@ -50,33 +51,28 @@ export const SubTitle = styled.div`
     font-size: 2vw;
 `
 
-
-export const SubContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 50vw;
-`
-
 export const SubWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
 `
 
-
 export const CardWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(100px, 30vw);
 `
 
 export const Card = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: center;
     flex-wrap: wrap;
     width: 20vw;
+    height: 400px;
 `
 
 export const Image = styled.img`
+    height: 20vw;
     width: 90%;
     padding: 2vw 2vw 1vw 2vw;
 `
@@ -87,6 +83,9 @@ export const CardTitle = styled.div`
     width: 90%;
     margin-left:10px;
     padding: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 `
 export const TagWrapper = styled.div`
     display: flex;
