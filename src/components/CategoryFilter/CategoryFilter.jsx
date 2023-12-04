@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function CategoryFilter({ handleCategoryFilter, handleDataUpdate }) {
-    let button = ["전체", "전자기기", "지갑/카드", "악세사리", "화장품", "기타"];
+    let button = ["전체", "전자기기", "지갑,카드", "악세사리", "화장품", "기타"];
 
     const [btnActive, setBtnActive] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);

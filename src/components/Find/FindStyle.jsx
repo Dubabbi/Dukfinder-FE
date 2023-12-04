@@ -64,6 +64,7 @@ export const CardStyle = styled(Card)`
 `
 export const CardImgStyle = styled(Card.Img)`
     border-radius: 15px 15px 0px 0px;
+    height: 270px;
 `
 
 export const YellowCardBody = styled(Card.Body)`
