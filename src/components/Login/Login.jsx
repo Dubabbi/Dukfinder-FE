@@ -13,6 +13,8 @@ const Login = () => {
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
+  const [data, setData] = useState([]);
+  const [userInfo, setUserInfo] = useState(null); // 사용자 정보 상태
 
   useEffect(() => {
     if (nameValid && pwValid) {
@@ -75,7 +77,8 @@ const Login = () => {
         // 토큰을 상태로 저장하거나 다른 곳에 활용할 수 있도록 처리
         // 예: 저장된 토큰을 전역 상태로 관리하는 Context API 활용
         // 여기서는 간단하게 alert으로 토큰을 표시
-        alert('토큰: ' + response.data.token);
+        // alert('토큰: ' + response.data.token);
+        localStorage.setItem('key', response.data.token);
   
         // navigate 함수를 사용하여 페이지 이동
         navigate('/');
