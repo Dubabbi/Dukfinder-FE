@@ -97,8 +97,8 @@ function Find() {
                             p_id={post.id}
                             p_title={post.title}
                             p_date={post.date_select}
-                            p_findPlace={post.LostAndFound}
-                            p_keepPlace={post.location}
+                            p_findPlace={post.location}
+                            p_keepPlace={post.LostAndFound}
                             p_category={post.category}
                             p_content={post.content}
                             p_createtime={post.created_at}

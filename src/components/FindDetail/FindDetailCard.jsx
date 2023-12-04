@@ -37,7 +37,7 @@ function FindDetailCard(props) {
                 </D.DeleteContainer>
                 <D.SubtitleContainer className="mb-3 text-muted"><span>습득날짜:</span> {post.date_select}</D.SubtitleContainer>
                 <D.SubtitleContainer className="mb-3 text-muted"><span>습득장소:</span> {post.location}</D.SubtitleContainer>
-                <D.SubtitleContainer className="mb-3 text-muted"><span>보관장소:</span> {post.location}</D.SubtitleContainer>
+                <D.SubtitleContainer className="mb-3 text-muted"><span>보관장소:</span> {post.LostAndFound}</D.SubtitleContainer>
                 <D.SubtitleContainer className="mb-3 text-muted"><span>분류:</span> {post.category}</D.SubtitleContainer>
                 <D.CardContent>
                     {post.content.split('\n').map((content, index) => (
