@@ -9,21 +9,23 @@ function CategoryFilter({ handleCategoryFilter, handleDataUpdate }) {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        // 여기서 토큰을 가져오고, 로그인 상태를 확인하는 로직을 구현해야 합니다.
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.getItem('key');
 
         if (token) {
-            // 서버로 토큰을 보내어 유효성을 검사하고 로그인 상태를 판단할 수 있는 엔드포인트를 호출합니다.
-            axios.post('http://127.0.0.1:8000/auth/check', { token })
-                .then(response => {
-                    // 유효한 토큰인 경우
-                    setIsLoggedIn(true);
-                })
-                .catch(error => {
-                    // 토큰이 유효하지 않은 경우
-                    setIsLoggedIn(false);
-                    console.error('Invalid token:', error);
-                });
+            axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/userinfo/', {
+                headers: {
+                    Authorization: `Token ${token}`
+                }
+            })
+            .then(response => {
+                setIsLoggedIn(true);
+                console.log("로그인되었습니다.")
+                
+            })
+            .catch(error => {
+                setIsLoggedIn(false);
+                console.error('Invalid token:', error);
+            });
         } else {
             setIsLoggedIn(false);
         }
@@ -34,10 +36,10 @@ function CategoryFilter({ handleCategoryFilter, handleDataUpdate }) {
         setBtnActive(e.target.value);
         handleCategoryFilter(category);
 
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.getItem('key');
 
         if (isLoggedIn) {
-            axios.get(`http://127.0.0.1:8000/find_posts/category/${category}`, {
+            axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/category/${category}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
