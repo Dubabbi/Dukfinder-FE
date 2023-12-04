@@ -1,4 +1,4 @@
-import SearchBar from './SearchBar';
+import SearchBar from '../SearchBar/SearchBar';
 import * as M from './MainStyle';
 import { PiBell } from "react-icons/pi";
 import Card from './Card';

@@ -1,9 +1,10 @@
 
+
 export const data = {
     results: [
         {
             p_id: "1",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "에어팟 케이스",
             p_date: "2023.11.16",
             p_findPlace: "학식당",
@@ -15,7 +16,7 @@ export const data = {
         },
         {
             p_id: "2",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "해드폰",
             p_date: "2023.11.19",
             p_findPlace: "도서관 2층",
@@ -28,7 +29,7 @@ export const data = {
         },
         {
             p_id: "3",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "에어팟 케이스",
             p_date: "2023.11.16",
             p_findPlace: "학식당",
@@ -41,7 +42,7 @@ export const data = {
         },
         {
             p_id: "4",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "해드폰",
             p_date: "2023.11.19",
             p_findPlace: "도서관 2층",
@@ -54,7 +55,7 @@ export const data = {
         },
         {
             p_id: "5",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "에어팟 케이스",
             p_date: "2023.11.16",
             p_findPlace: "학식당",
@@ -67,7 +68,7 @@ export const data = {
         },
         {
             p_id: "6",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "해드폰",
             p_date: "2023.11.19",
             p_findPlace: "도서관 2층",
@@ -80,7 +81,7 @@ export const data = {
         },
         {
             p_id: "7",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "에어팟 케이스",
             p_date: "2023.11.16",
             p_findPlace: "학식당",
@@ -93,7 +94,7 @@ export const data = {
         },
         {
             p_id: "8",
-            // p_img: { Airpod },
+            p_img: "../src/Img/airpod.jpg",
             p_title: "해드폰",
             p_date: "2023.11.19",
             p_findPlace: "도서관 2층",

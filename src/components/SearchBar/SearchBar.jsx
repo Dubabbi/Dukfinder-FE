@@ -9,6 +9,7 @@ function SearchBar({ setSearchTerm }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         setSearchTerm(searchValue);
+        setSearchValue('');
     };
 
     return (

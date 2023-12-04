@@ -1,19 +1,16 @@
 import * as D from "./LostDetailStyle";
 import { data } from '../../postData';
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import LostDetailCard from './LostDetailCard';
-import Airpod from '../../Img/airpod.jpg';
 import Image from 'react-bootstrap/Image';
 import CommentMain from "../Comment/CommentMain";
 
-import { Link } from 'react-router-dom';
 
-function FindDetail(props) {
+function LostDetail(props) {
     const { p_id } = useParams();
     const post = data.results.find(post => post.p_id === p_id);
-    
-    
+   
     return (
         <>  
             <D.FindDetailWrapper smallSize>
@@ -28,11 +25,11 @@ function FindDetail(props) {
                 </D.PathContainer>
 
                 <D.DetailContainer>
-                    <D.ImageSize src={Airpod} fluid smallSize/> 
-                    <LostDetailCard />
+                    <D.ImageSize src={post.p_img} fluid smallSize/> 
+                    <LostDetailCard post={post}/>
                 </D.DetailContainer>
                 <D.line></D.line>
-                <CommentMain />
+                <CommentMain postId={p_id}/>
                 <D.ButtonContainer>
                     <D.ButtonStyle variant="warning" type="submit" as={Link} to={`../find`}>목록으로</D.ButtonStyle>
                 </D.ButtonContainer>
@@ -41,4 +38,4 @@ function FindDetail(props) {
     );
 }
 
-export default FindDetail;
+export default LostDetail;

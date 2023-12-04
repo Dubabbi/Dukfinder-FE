@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import * as F from './FindStyle';
-import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import Airpod from '../../Img/airpod.jpg';
+
 
 function truncateText(text, maxLength) {
     if (text.length > maxLength) {
@@ -12,15 +11,16 @@ function truncateText(text, maxLength) {
 }
 
 
-function PostCard({ p_id, p_title, p_date, p_findPlace, p_keepPlace, p_category, p_content, p_time}) {
+function PostCard({ p_id, p_img, p_title, p_date, p_findPlace, p_keepPlace, p_category, p_content, p_createtime}) {
     const maxLength = 50; // 최대 글자수
     const truncatedContent = truncateText(p_content, maxLength);
 
     
+
     return (
             
                 <F.CardStyle style={{ width: '28rem' }}>
-                    <F.CardImgStyle variant="top" src={Airpod} />
+                    <F.CardImgStyle variant="top" src={p_img} />
                     <F.YellowCardBody>
                     
                         <F.CardTitle>{p_title}</F.CardTitle>
@@ -32,7 +32,7 @@ function PostCard({ p_id, p_title, p_date, p_findPlace, p_keepPlace, p_category,
                             {truncatedContent}
                         </F.TruncatedContent>
                         <F.LinkTimeGroup>
-                        <F.TimeContainer className="mb-3 text-muted">{new Date(p_time).toLocaleDateString()}</F.TimeContainer>
+                        <F.TimeContainer className="mb-3 text-muted">{new Date(p_createtime).toLocaleDateString()}</F.TimeContainer>
                         <F.LinkStyle className="ml-auto"  as={Link} to={`./${p_id}`}>
                             자세히{'>>'}
                         </F.LinkStyle>
