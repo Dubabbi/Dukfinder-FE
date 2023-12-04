@@ -16,33 +16,43 @@ function Find() {
     const [findPostData, setFindPostData] = useState([]);
 
     useEffect(() => {
-        const token = localStorage.getItem('authToken'); // 로컬 스토리지에서 토큰 가져오기
-
+        const token = localStorage.getItem('key');
+        console.log('토큰 값:', token); // 토큰 값 확인
+    
         if (token) {
-            // 토큰이 있다면, 사용자가 로그인한 상태로 간주하여 데이터를 가져옵니다.
-            axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/', {
+            axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/userinfo/', {
                 headers: {
-                    Authorization: `Bearer ${token}` // 인증 토큰을 헤더에 추가
-                },
-                params: {
-                    searchTerm: searchTerm // 검색어를 쿼리 문자열에 포함시킵니다.
+                    Authorization: `Token ${token}`
                 }
             })
+            .then(response => {
+                setLoggedIn(true);
+    
+                // 로그인 상태일 때 포스트를 불러옴
+                axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/', {
+                    headers: {
+                        Authorization: `Token ${token}` // 토큰을 헤더에 추가
+                    }
+                })
                 .then(response => {
                     setFindPostData(response.data);
-                    setLoggedIn(true); // 로그인 상태로 설정
+                    console.log('포스트를 불러왔습니다.');
                 })
                 .catch(error => {
                     console.error('Error fetching data: ', error);
                 });
+            })
+            .catch(error => {
+                setLoggedIn(false);
+                console.error('Invalid token:', error);
+            });
         } else {
-            // 토큰이 없다면, 로그인 페이지로 이동하거나 필요한 작업을 수행합니다.
-            setLoggedIn(false); // 로그인되지 않은 상태로 설정
-            // 예시: 로그인 페이지로 리디렉션하는 등의 작업을 수행할 수 있습니다.
+            setLoggedIn(false); // 토큰이 없다면, 로그인되지 않은 상태로 설정
         }
-    }, [searchTerm]);
+    }, []);
 
     //카테고리 필터 버튼
+
     const handleCategoryFilter = (category) => {
         setSelectedCategory(category.toLowerCase()); // 선택된 카테고리 업데이트
     };
@@ -82,6 +92,7 @@ function Find() {
                 {loggedIn ? (
                     filteredPosts.map((post) => (
                         <PostCard
+                           
                             p_img={post.head_image}
                             p_id={post.id}
                             p_title={post.title}
