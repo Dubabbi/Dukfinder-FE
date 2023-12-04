@@ -7,29 +7,38 @@ class CommentMain extends Component {
     state = {
         value: '',
         list: [
-            { userid: 'qwerty1', content: 'hello111111', date: new Date().getTime() },
-            { userid: 'qwerty2', content: 'hello222222', date: new Date().getTime() },
-            { userid: 'qwerty3', content: 'hello333333', date: new Date().getTime() }
+            { id: 1, userid: 'qwerty1', content: 'hello111111', date: new Date().getTime() },
+            { id: 2, userid: 'qwerty2', content: 'hello222222', date: new Date().getTime() },
+            { id: 3, userid: 'qwerty3', content: 'hello333333', date: new Date().getTime() }
             // 이런 댓글 데이터를 가져왔다고 가정..
         ]
     }
 
+    removeComment = id => {
+        const updatedList = this.state.list.filter(comment => comment.id !== id);
+        this.setState({ list: updatedList });
+    }
+
     addList = (content) => {
-        this.setState({
-            list: [
-                ...this.state.list,
-                {userid:'ash999898', content, date:new Date().getTime()}
-            ]
-        })
+        const newComment = {
+            id: this.state.list.length + 1,
+            userid: 'ash999898',
+            content,
+            date: new Date().getTime()
+        };
+        this.setState(prevState => ({
+            list: [...prevState.list, newComment]
+        }));
     }
        
     render() {
-       
+        const { postId } = this.props;
+        
        return(
           <>
              <Comment>
                 
-                <CommentList list={this.state.list}/>
+                <CommentList list={this.state.list} removeComment={this.removeComment}/>
                 <CommentForm addList={ this.addList }/>
              </Comment>
           </>

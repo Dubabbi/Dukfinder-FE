@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as L from './LostStyle';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
-import Airpod from '../../Img/airpod.jpg';
+
 
 function truncateText(text, maxLength) {
     if (text.length > maxLength) {
@@ -12,7 +12,7 @@ function truncateText(text, maxLength) {
 }
 
 
-function LostPostCard({ p_id, p_title, p_date, p_findPlace, p_category, p_status, p_content, p_time }) {
+function LostPostCard({ p_id, p_img, p_title, p_date, p_findPlace, p_category, p_status, p_content, p_time }) {
     const maxLength = 50; // 최대 글자수
 
     const truncatedContent = truncateText(p_content, maxLength);
@@ -21,7 +21,7 @@ function LostPostCard({ p_id, p_title, p_date, p_findPlace, p_category, p_status
     return (
             
                 <L.CardStyle style={{ width: '28rem' }}>
-                    <L.CardImgStyle variant="top" src={Airpod} />
+                    <L.CardImgStyle variant="top" src={p_img} />
                     <L.YellowCardBody>
                     
                         <L.CardTitle>{p_title}</L.CardTitle>

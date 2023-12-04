@@ -25,22 +25,22 @@ class CommentList extends Component {
     };
   
     handleDelete = () => {
-      // Implement your delete logic here using this.state.selectedPostId
-      // Once the deletion is done, close the modal
-      this.setState({ show: false });
-    };
+      const { selectedPostId } = this.state;
+      this.props.removeComment(selectedPostId); // Remove the comment from the list
+      this.setState({ show: false, selectedPostId: null }); // Reset selectedPostId after deletion
+  };
 
    rendList = () => this.props.list.map( (v,k) => {
 
       
       return(
-         <C.CommentListStyle>
+         <C.CommentListStyle key={v.id}>
             <C.DeleteContainer>
                <C.UserRow>
                   <Col>{v.userid}</Col>
                </C.UserRow>
-               <C.DeleteButton variant="warning" type="submit" onClick={() => this.handleShow(v.p_id)}>삭제</C.DeleteButton>
-                <Modal show={this.state.show} onHide={this.handleClose}>
+               <C.DeleteButton variant="warning" type="submit" onClick={() => this.handleShow(v.id)}>삭제</C.DeleteButton>
+                <Modal show={this.state.show && this.state.selectedPostId === v.id} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <D.ModalTitleSize>댓글이 삭제되었습니다.</D.ModalTitleSize>
             </Modal.Header>
