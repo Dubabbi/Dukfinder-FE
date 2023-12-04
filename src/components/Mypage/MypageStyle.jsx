@@ -1,9 +1,18 @@
 import styled from 'styled-components';
+import { IoMdSettings } from "react-icons/io";
 
 export const BackColor = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: #E3E3E3;
+`
+
+export const Setting = styled(IoMdSettings)`
+    width: 4vw;
+    height: 4vw;
+    position: absolute;
+    right: 4vw;
+    margin-top: 2vw;
 `
 
 export const Title = styled.div`
@@ -16,8 +25,6 @@ export const Title = styled.div`
 export const BackYellow = styled.div`
     background-color: #FFFAE0;
     width: 100vw;
-    position: absolute;
-    top: 35vh;
 `
 
 export const ProfileWrapper = styled.div`
@@ -27,15 +34,13 @@ export const ProfileWrapper = styled.div`
     background-color:transparent;
     width: 100vw;
     height: 20vw;
-    z-index: 10;
+    padding-top: 5vw;
+    margin-bottom: 5vw;
 `
 
 export const ProfilePic = styled.div`
     width: 10vw;
     height: 10vw;
-    background-color: gray;
-    border-radius: 45%;
-    
 `
 
 export const Nickname = styled.div`
@@ -48,7 +53,7 @@ export const Nickname = styled.div`
 export const Email = styled.div`
     font-size: 1vw;
     color: #333333;
-    padding-top: 1vw;
+    padding: 1vw 0 1vw 0;
     background-color:transparent;
 `
 
