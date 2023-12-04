@@ -73,6 +73,16 @@ export const Select = styled.select`
   width: 300px;
 `;
 
+export const DatePicker = styled.input`
+background-color: #EEEEEE;
+border: 1px #ddd solid;
+height: 40px;
+border-radius: 5px;
+font-size: 2rem;
+font-family: inherit;
+width: 300px;
+`
+
 export const Textarea = styled.textarea`
   background-color: #EEEEEE;
   margin-top: 20px;
@@ -119,4 +129,31 @@ margin-top: 15px;
   background: #151515ae;
   border-radius: 10px;
 }
+`;
+
+
+export const DatePickerWrapper = styled.select`
+  background-color: #EEEEEE;
+  border: 1px #ddd solid;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 2rem;
+  font-family: inherit;
+  width: 300px;
+  display: flex;
+  align-items: center;
+
+  .react-datepicker-wrapper {
+  }
+
+  .react-datepicker__input-container {
+    width: 100%;
+    input {
+      border: none;
+      padding: 10px;
+      font-size: 2rem;
+      font-family: inherit;
+      border-radius: 5px;
+    }
+  }
 `;
