@@ -106,10 +106,8 @@ export const YellowCardBody = styled(Card.Body)`
     max-height: calc(100% - 150px); 
     border: 1px solid #FFE665;
     border-radius: 15px;
-    @media screen and (max-width: 768px) {
-       
-    
-`;
+    @media screen and (max-width: 768px) {}
+`
 
 export const CardTitle=styled(Card.Title)`
     font-size: 30px;
