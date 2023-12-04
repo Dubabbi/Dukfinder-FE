@@ -13,6 +13,7 @@ export const Section = styled.section`
 
 export const PageTitle = styled.div`
   margin-bottom: 30px;
+  font-size: 100px;
 `
 
 export const TitleText = styled.h3`
@@ -119,6 +120,7 @@ export const BoardTable = styled.table`
   width: 100%;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  border: 2px solid #111;
 `
 
 export const TableHead = styled.thead`
