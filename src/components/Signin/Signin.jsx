@@ -4,10 +4,7 @@ import axios from 'axios';
 import * as L from '../Login/LoginStyle';
 import * as S from './SigninStyle';
 
-const User = {
-  email: 'test@example.com',
-  pw: 'test2323@@@',
-};
+
 
 const Signin = () => {
 
@@ -30,12 +27,27 @@ const Signin = () => {
 
     const [confirmPwMsg, setConfirmPwMsg] = useState(''); 
 
-    const onClickConfirmButton = () => {
-      if (nameValid && emailValid && pwValid && confirmPw === pw) {
-        generateRandom();
+    const onClickConfirmButton = async () => {
+      try {
+        const response = await axios.post('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/register/', {
+          username: name, // 클라이언트의 name 상태를 서버의 username 필드로 전달
+          email,
+          password: pw, // 클라이언트의 pw 상태를 서버의 password 필드로 전달
+          password2: confirmPw // 클라이언트의 confirmPw 상태를 서버의 password2 필드로 전달
+        });
+    
+        // Check the response and handle successful signup
+        if (response.status === 201) {
+          setSignupComplete(true);
+          // Handle success (perhaps show a success message)
+        } else {
+          // Handle other responses accordingly
+        }
+      } catch (error) {
+        console.error('Error while signing up:', error);
+        // Handle error cases (perhaps show an error message)
       }
     };
-    
 
 
     useEffect(() => { 
