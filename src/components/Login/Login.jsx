@@ -8,29 +8,39 @@ import * as L from './LoginStyle';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [pw, setPw] = useState('');
-
+  const [name, setName] = useState('');
+  const [nameValid, setNameValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [notAllow, setNotAllow] = useState(true);
+  const [data, setData] = useState([]);
+  const [userInfo, setUserInfo] = useState(null); // 사용자 정보 상태
 
   useEffect(() => {
-    if (emailValid && pwValid) {
+    if (nameValid && pwValid) {
       setNotAllow(false);
       return;
     }
     setNotAllow(true);
-  }, [emailValid, pwValid]);
+  }, [nameValid, pwValid]);
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
     const regex =
-    /^[a-zA-Z0-9$`~!@$!%*#^?&\\(\\)\-_=+]{2,}$/;
+    /^(?=.*[a-zA-Z]).*duksung\.ac\.kr$/;
     if (regex.test(e.target.value)) {
       setEmailValid(true);
     } else {
       setEmailValid(false);
     }
   };
+
+  const handleName = (n) => {
+    setName(n.target.value);
+    const regex = /^[ㄱ-ㅎ|가-힣|a-z|A-Z|0-9|].{1,8}$/i;
+    setNameValid(regex.test(n.target.value));
+  };
+
 
   const handlePw = (e) => {
     setPw(e.target.value);
@@ -48,9 +58,9 @@ const Login = () => {
   const onClickConfirmButton = async () => {
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/user/login/',
+        'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/login/',
         {
-          email: email,
+          username: name,
           password: pw,
         },
         {
@@ -65,7 +75,8 @@ const Login = () => {
         // 토큰을 상태로 저장하거나 다른 곳에 활용할 수 있도록 처리
         // 예: 저장된 토큰을 전역 상태로 관리하는 Context API 활용
         // 여기서는 간단하게 alert으로 토큰을 표시
-        alert('토큰: ' + response.data.token);
+        // alert('토큰: ' + response.data.token);
+        localStorage.setItem('key', response.data.token);
   
         // navigate 함수를 사용하여 페이지 이동
         navigate('/');
@@ -101,20 +112,15 @@ const Login = () => {
         </L.TitleWrap>
         {/* 🦆 */}
         <L.ContentWrap>
-          <L.InputTitle>Email</L.InputTitle>
-          <L.InputWrap>
-            <L.Input
-              type="text"
-              placeholder="test@duksung.ac.kr"
-              value={email}
-              onChange={handleEmail}
-            />
-          </L.InputWrap>
-          <L.ErrorMessageWrap>
-            {!emailValid && email.length > 0 && (
-              <div>올바른 이메일을 입력해주세요.</div>
-            )}
-          </L.ErrorMessageWrap>
+          <L.InputTitle>Username</L.InputTitle>
+              <L.InputWrap>
+                <L.Input
+                  type="text"
+                  placeholder="덕새"
+                  value={name}
+                  onChange={handleName}
+                />
+              </L.InputWrap>
 
           <L.InputTitle style={{ marginTop: '26px' }}>Password</L.InputTitle>
           <L.InputWrap>
