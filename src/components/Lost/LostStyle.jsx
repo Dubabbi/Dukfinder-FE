@@ -42,6 +42,7 @@ export const NoticeTitle=styled.div`
         &:hover {
             text-decoration: underline;
         }
+    }
 `
 
 

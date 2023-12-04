@@ -4,8 +4,6 @@ import axios from 'axios';
 import * as L from '../Login/LoginStyle';
 import * as S from './SigninStyle';
 
-
-
 const Signin = () => {
 
     const [email, setEmail] = useState('');

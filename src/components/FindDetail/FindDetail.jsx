@@ -9,40 +9,57 @@ import { Link } from 'react-router-dom';
 
 function FindDetail(props) {
     const { p_id } = useParams();
-    // const post = data.results.find(post => post.p_id === p_id);
+    //const post = data.results.find(post => post.p_id === p_id);
     const [post, setPost] = useState(null);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    const fetchData = async (token) => {
-        try {
-            const response = await axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/${p_id}/`, {
-                headers: {
-                    Authorization: `Bearer ${token}` // 여기에 인증 토큰을 넣어주세요
-                    // 만약 API가 다른 인증 방식을 요구한다면 해당 방식으로 헤더를 설정해야 합니다
-                }
-            });
-            setPost(response.data); // 장고 API에서 받은 데이터를 상태로 설정
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    
-    useEffect(() => {
-        const token = localStorage.getItem('authToken');
-        if (token) {
-            setIsLoggedIn(true); // 토큰이 있으면 로그인된 상태로 설정
-            fetchData(token);
-        }
-    }, [p_id]);
+    const [loggedIn, setLoggedIn] = useState(false); // 로그인 여부 상태
 
    
+    
+    useEffect(() => {
+        const token = localStorage.getItem('key');
+        if (token) {
+            loadPost(token);
+        } else {
+            setLoggedIn(false);
+        }
+    }, []);
+
+    const loadPost = (token) => {
+        axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/userinfo/`, {
+            headers: {
+                Authorization: `Token ${token}`
+            }
+        })
+        .then(response => {
+            setLoggedIn(true);
+            fetchPost(token);
+        })
+        .catch(error => {
+            setLoggedIn(false);
+            console.error('Invalid token:', error);
+        });
+    };
+
+    const fetchPost = (token) => {
+        axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/${p_id}`, {
+            headers: {
+                Authorization: `Token ${token}`
+            }
+        })
+        .then(response => {
+            setPost(response.data);
+            console.log('포스트를 불러왔습니다.');
+        })
+        .catch(error => {
+            console.error('Error fetching data: ', error);
+        });
+    };
 
     if (!post) {
         return <div>Loading...</div>; // 데이터가 로딩 중일 때 표시할 내용
     }
 
-    if (!isLoggedIn) {
+    if (!loggedIn) {
         return <Redirect to="../login" />; // 로그인되지 않았다면 로그인 페이지로 리다이렉트
     }
     return (
