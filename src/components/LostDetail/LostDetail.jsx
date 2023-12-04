@@ -80,7 +80,7 @@ function LostDetail(props) {
                 <D.line></D.line>
                 {/* <CommentMain postId={p_id}/> */}
                 <D.ButtonContainer>
-                    <D.ButtonStyle variant="warning" type="submit" as={Link} to={`../find`}>목록으로</D.ButtonStyle>
+                    <D.ButtonStyle variant="warning" type="submit" as={Link} to={`../lost`}>목록으로</D.ButtonStyle>
                 </D.ButtonContainer>
             </D.FindDetailWrapper>
         </>
