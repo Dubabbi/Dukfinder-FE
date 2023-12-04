@@ -50,6 +50,7 @@ function Lost() {
 
                             <LostPostCard
                                 p_id={item.p_id}
+                                p_img={item.p_img}
                                 p_title={item.p_title}
                                 p_date={item.p_date}
                                 p_findPlace={item.p_findPlace}

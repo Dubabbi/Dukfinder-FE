@@ -19,15 +19,15 @@ class CommentForm extends Component  {
    };
 
    handleSubmit = e => {
-      e.preventDefault()
+      e.preventDefault();
       if (this.state.value.trim() === '') {
-         return; // 빈 값은 추가하지 않음
-       }
-      this.props.addList(this.state.value)
+        return; // 빈 값은 추가하지 않음
+      }
+      this.props.addComment(this.state.value); // 변경: addList -> addComment
       this.setState({
-         value:''
+        value: ''
       });
-   };
+    };
 
    render() {
       return (

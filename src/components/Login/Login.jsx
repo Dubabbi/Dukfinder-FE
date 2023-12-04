@@ -70,7 +70,9 @@ const Login = () => {
   
       if (response.status === 200) {
         // 로그인 성공 시
+        localStorage.setItem('key', response.data.token);
         alert('로그인에 성공했습니다.');
+        
         console.log('토큰:', response.data.token);
         // 토큰을 상태로 저장하거나 다른 곳에 활용할 수 있도록 처리
         // 예: 저장된 토큰을 전역 상태로 관리하는 Context API 활용
