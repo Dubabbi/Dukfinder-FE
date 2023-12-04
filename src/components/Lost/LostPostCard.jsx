@@ -12,7 +12,7 @@ function truncateText(text, maxLength) {
 }
 
 
-function LostPostCard({ p_id, p_img, p_title, p_date, p_findPlace, p_category, p_status, p_content, p_time }) {
+function LostPostCard({ p_id, p_img, p_title, p_date, p_lostPlace, p_category, p_status, p_content, p_createtime }) {
     const maxLength = 50; // 최대 글자수
 
     const truncatedContent = truncateText(p_content, maxLength);
@@ -27,7 +27,7 @@ function LostPostCard({ p_id, p_img, p_title, p_date, p_findPlace, p_category, p
                         <L.CardTitle>{p_title}</L.CardTitle>
                         
                             <L.SubtitleContainer className="mb-3 text-muted">분실날짜: {p_date}</L.SubtitleContainer>
-                            <L.SubtitleContainer className="mb-3 text-muted">분실장소: {p_findPlace}</L.SubtitleContainer>
+                            <L.SubtitleContainer className="mb-3 text-muted">분실장소: {p_lostPlace}</L.SubtitleContainer>
                             <L.SubtitleContainer className="mb-3 text-muted">종류: {p_category}</L.SubtitleContainer>
                             <L.SubtitleContainer className="mb-3 text-muted">{p_status}</L.SubtitleContainer>
                         
@@ -35,7 +35,7 @@ function LostPostCard({ p_id, p_img, p_title, p_date, p_findPlace, p_category, p
                             {truncatedContent}
                         </L.TruncatedContent>
                         <L.LinkTimeGroup>
-                        <L.TimeContainer className="mb-3 text-muted">{new Date(p_time).toLocaleDateString()}</L.TimeContainer>
+                        <L.TimeContainer className="mb-3 text-muted">{new Date(p_createtime).toLocaleDateString()}</L.TimeContainer>
                         <L.LinkStyle className="ml-auto" as={Link} to={`./${p_id}`}>
                             자세히{'>>'}
                         </L.LinkStyle>
