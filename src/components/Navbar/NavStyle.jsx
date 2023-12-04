@@ -16,7 +16,12 @@ export const Page = styled.div`
     padding: 10px;
 `
 
-export const Logo = styled.div`
-    width : 20px;
-    height : 20px;
+export const Logo = styled.img`
+    width : 25px;
+    height : 25px;
+    margin : 0 10px 0 10px;
+`
+
+export const Avatar = styled.div`
+    margin: 0 20px 0 10px;
 `
