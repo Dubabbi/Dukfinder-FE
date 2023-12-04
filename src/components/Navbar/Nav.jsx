@@ -35,8 +35,8 @@ export default function Nav() {
         <>
             <N.NavWrapper>
                 <Link to="/"><N.Page>home</N.Page></Link>
-                <Link to="/lost"><N.Page>lost</N.Page></Link>
                 <Link to="/find"><N.Page>find</N.Page></Link>
+                <Link to="/lost"><N.Page>lost</N.Page></Link>
                 <Link to="/notice"><N.Page>notice</N.Page></Link>
                 <Link to="https://www.duksung.ac.kr/main.do"><N.Logo src={DLogo}/></Link>
                 <Link to="/mypage"><N.Avatar><Avvvatars value={data.username} style="shape"/></N.Avatar></Link>
