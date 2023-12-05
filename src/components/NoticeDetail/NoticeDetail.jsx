@@ -4,33 +4,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import * as N from '../Notice/NoticeStyle';
 import * as D from './NoticeDetailStyle';
+import * as U from '../Upload/UploadStyle';
 
-const VocViewWrapper = styled.div`
-  width: 60%;
-  margin: 0 auto;
-`;
-
-const VocViewGoListBtn = styled.button`
-  border: 0;
-  padding: 10px;
-  background-color: #ffd9d9;
-`;
-
-const VocViewRow = styled.div`
-  margin: 10px 0;
-  display: flex;
-`;
-
-const VocViewLabel = styled.label`
-  margin: 10px 0;
-  width: 30%;
-  font-weight: bold;
-`;
-
-const VocViewContent = styled.div`
-  margin: 10px 0;
-  width: 70%;
-`;
 
 function NoticeDetail(props) {
   const { n_id } = useParams();
@@ -77,31 +52,47 @@ function NoticeDetail(props) {
     }
   }, [navigate]);
   return (
-    <VocViewWrapper>
-      <N.NoticeWrapper>
-        <N.Section>
-          <N.PageTitle>
-            <N.TitleText>공지사항</N.TitleText>
-          </N.PageTitle>
-          <D.TitleWrap>
-            <hr />
-            <D.DetailTitle>{notice.title}</D.DetailTitle>
-            <hr />
-          </D.TitleWrap>
-          <VocViewRow>
-            <VocViewLabel>작성일</VocViewLabel>
-            <label>{notice.created_at}</label>
-          </VocViewRow>
-          <VocViewRow>
-            <VocViewLabel>내용</VocViewLabel>
-            <VocViewContent>{notice.content}</VocViewContent>
-          </VocViewRow>
-          <VocViewGoListBtn as={Link} to="/notice">
-            목록으로
-          </VocViewGoListBtn>
-        </N.Section>
-      </N.NoticeWrapper>
-    </VocViewWrapper>
+
+    <U.MainWrapper>
+      <N.Section>
+        <N.PageTitle>
+          <N.TitleText>공지사항</N.TitleText>
+        </N.PageTitle>
+    <D.BoardViewWrap>
+      <D.BoardView>
+      <D.Title>{notice.title}</D.Title>
+          <D.Info>
+            <D.InfoItem>
+              <D.InfoItemText>{notice.id}</D.InfoItemText>
+            </D.InfoItem>
+            <D.InfoItem>
+              <D.InfoItemText>작성일</D.InfoItemText>
+              <D.InfoItemText>: {new Date(notice.created_at).toLocaleDateString()}</D.InfoItemText>
+            </D.InfoItem>
+            <D.InfoItem>
+              <D.InfoItemText>조회</D.InfoItemText>
+              <D.InfoItemText>{notice.view_count}</D.InfoItemText>
+            </D.InfoItem>
+            </D.Info>
+            <D.Cont>
+              {notice.content && notice.content.split('\n').map((content, index) => (
+                <React.Fragment key={index}>
+                  {content}
+                  {index !== notice.content.split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </D.Cont>
+
+        </D.BoardView>
+        <D.BtWrap>
+          <D.BtLink as={Link} to="/notice">
+            목록
+          </D.BtLink>
+          <D.BtLink href="edit.html">수정</D.BtLink>
+        </D.BtWrap>
+      </D.BoardViewWrap>
+    </N.Section>
+    </U.MainWrapper>
   );
 }
 

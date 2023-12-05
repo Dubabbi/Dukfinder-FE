@@ -28,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
 
     vertical-align: baseline;
     font: inherit;
-    font-family: "Pretendard";
+    font-family: 'LINESeedKR-Bd';
   }
 
   article, aside, details, figcaption, figure,
@@ -75,8 +75,7 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color:rgb(0 0 0 / 0%);
     scroll-behavior: smooth;
-    font-family: sans-serif;
-
+    font-family: 'LINESeedKR-Bd';
     font-size: 62.5%;
     user-select: none;
   }
@@ -113,29 +112,26 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-  /* Thin 100 */
-  @font-face {
-	font-family: "Noto Sans KR";
 
-	font-weight: 100;
-	src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
+  @font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
   }
 
-  /* regular 400 */
-  @font-face {
-	font-family: "Noto Sans KR";
-
-	font-weight: 400;
-	src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap");
-  }
-
-  /* Bold 700 */
-  @font-face {
-	font-family: "Noto Sans KR";
-
-	font-weight: 700;
-	src: url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
-  }
-
-
+  
+@font-face {
+  font-family: 'LINESeedKR-Bd';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+  
+@font-face {
+  font-family: 'LINESeedKR-Bd';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
 `;

@@ -39,8 +39,8 @@ class CommentList extends Component {
 
     if (!comments || comments.length === 0) {
       return (<>
-       <C.CommentNot>댓글이 아직 없습니다. 댓글을 남겨보세요!</C.CommentNot>
-    </>)
+        <C.CommentNot>댓글이 아직 없습니다. 댓글을 남겨보세요!</C.CommentNot>
+      </>)
     }
 
     return (
@@ -51,25 +51,12 @@ class CommentList extends Component {
               <C.UserRow>
                 <Col>{comment.user_id}</Col>
               </C.UserRow>
-
               <Row>
-
                 <Col>
-
-                  <C.DeleteButton
-                    variant="warning"
-                    type="submit"
-                    onClick={() => this.handleDelete(comment.id)}
-                  >
-                    삭제
+                  <C.DeleteButton variant="warning" type="submit" onClick={() => this.handleDelete(comment.id)}>
+                      삭제
                   </C.DeleteButton>
-
-
-
-                  <Modal
-                    show={this.state.show}
-                    onHide={this.handleClose}
-                  >
+                  <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
                       <D.ModalTitleSize>댓글이 삭제되었습니다.</D.ModalTitleSize>
                     </Modal.Header>
@@ -79,9 +66,7 @@ class CommentList extends Component {
                       </D.ModalButton>
                     </Modal.Footer>
                   </Modal>
-
                 </Col>
-
               </Row>
             </C.DeleteContainer>
             <C.ContentRow>
