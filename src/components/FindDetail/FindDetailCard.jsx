@@ -2,18 +2,40 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as D from "./FindDetailStyle";
 import { data } from '../../postData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
+
 
 function FindDetailCard(props) {
     const { p_id } = useParams();
-    
+    const navigate = useNavigate();
     const { post } = props;
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleDelete = () => {
+        const token = localStorage.getItem('key');
+
+        
+        axios.delete(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/${p_id}`, {
+            headers: {
+                Authorization: `Token ${token}`
+            }
+        })
+        .then(response => {
+            // 삭제 성공 시 처리할 내용
+            console.log('포스트가 성공적으로 삭제되었습니다.');
+            navigate('../find');
+        })
+        .catch(error => {
+            // 삭제 실패 시 처리할 내용
+            console.error('포스트 삭제 중 오류 발생: ', error);
+        });
+    };
 
     return (
         <D.CardStyle style={{ width: '65rem' }}>
@@ -29,7 +51,7 @@ function FindDetailCard(props) {
                             <D.ModalCloseButton variant="secondary" onClick={handleClose}>
                                 취소
                             </D.ModalCloseButton>
-                            <D.ModalButton variant="warning" onClick={handleClose}>
+                            <D.ModalButton variant="warning"  onClick={handleDelete}>
                                 삭제하기
                             </D.ModalButton>
                         </Modal.Footer>
