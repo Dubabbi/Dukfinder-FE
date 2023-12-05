@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 function FindDetail(props) {
     const { p_id } = useParams();
     //const post = data.results.find(post => post.p_id === p_id);
+    const [comments, setComments] = useState([]); 
     const [post, setPost] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false); // 로그인 여부 상태
 
@@ -19,6 +20,7 @@ function FindDetail(props) {
         const token = localStorage.getItem('key');
         if (token) {
             loadPost(token);
+            
         } else {
             setLoggedIn(false);
         }
@@ -54,6 +56,25 @@ function FindDetail(props) {
             console.error('Error fetching data: ', error);
         });
     };
+
+    
+
+    // const fetchComments = (token) => {
+    //     axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/${p_id}/comment/`, {
+    //         headers: {
+    //             Authorization: `Token ${token}`
+    //         }
+    //     })
+    //     .then(response => {
+    //         const comments = Array.isArray(response.data.comments) ? response.data.comments.filter(comment => comment.post_id === p_id) : [];
+    //         setComments(comments);
+    //         console.log('댓글을 불러왔습니다.');
+    //         console.log(response.data);
+    //     })
+    //     .catch(error => {
+    //         console.error('Error fetching comments:', error);
+    //     });
+    // };
 
     if (!post) {
         return <div>Loading...</div>; // 데이터가 로딩 중일 때 표시할 내용
