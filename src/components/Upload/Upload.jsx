@@ -33,7 +33,7 @@ const Upload = () => {
           'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/create',
           {
             title: title,
-            content: document.getElementById('content').value,
+            content: content,
             location: selectedLocation,
             category: selectedCategory,
             date: selectedDate,
@@ -136,7 +136,7 @@ const Upload = () => {
         </U.Wrapper>
         {/* 메시지와 이미지 업로드를 입력하는 섹션 */}
         <U.Wrapper>
-          <U.SecondForm>
+          <U.SecondForm onSubmit={handleSubmit}>
             <div>
               <U.Label>message</U.Label>
               <U.Textarea value={content} onChange={handleContentChange}></U.Textarea>
@@ -149,7 +149,7 @@ const Upload = () => {
                 </U.ImgButton>
               </U.InlineImg>
             </div>
-            <U.SubmitButton onClick={handleSubmit}>등록</U.SubmitButton>
+            <U.SubmitButton type="submit" value="저장"/>
           </U.SecondForm>
         </U.Wrapper>
       </N.Section>
