@@ -40,8 +40,7 @@ const Upload = () => {
           },
           {
             headers: {
-              Authorization: `Token ${token}`,
-              'Content-Type': 'application/json',
+              Authorization: `Token ${token}`
             },
           }
         );
@@ -70,7 +69,7 @@ const Upload = () => {
         .then(response => setLocations(response.data))
         .catch(error => console.error('Error fetching locations:', error));
 
-      axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/category/category', {
+      axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/category/<str:category>', {
         headers: { Authorization: `Token ${token}` }
       })
         .then(response => setCategories(response.data))
