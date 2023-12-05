@@ -1,9 +1,8 @@
 import * as F from './FooterStyle';
 import React from "react"
 import { Link} from 'react-router-dom';
-import './Footer.css'
-import * as U from '../Upload/UploadStyle';
-
+import Insta from './../../assets/icon/instagram.svg'
+import Logo from './../../assets/icon/youtube.svg'
 
 const Front = ['윤소은', '조예영', '최유리'];
 const Back = ['김나영', '여현정'];
@@ -13,15 +12,16 @@ export default function Footer() {
     return (
         <>
             <F.FooterWrapper>
-                <table>
-                <tr>
-                <td>
+
                 <F.DevWrapper>
                     <F.Dev>Front-end</F.Dev>
                     <F.Names>
                         {Front.map((developer, index) => (
                             <F.NameEach key={index}>{developer} &nbsp;</F.NameEach>
                         ))}</F.Names>
+   
+                        <F.Logo src={Logo}/>
+                        <F.Social>Facebook</F.Social>
                 </F.DevWrapper>
                 <F.DevWrapper>
                     <F.Dev>Back-end</F.Dev>
@@ -29,21 +29,18 @@ export default function Footer() {
                         {Back.map((developer, index) => (
                             <F.NameEach key={index}>{developer} &nbsp;</F.NameEach>
                         ))}</F.Names>
-                </F.DevWrapper></td><td>
-                <F.DevWrapper>
-                <div class='footer-links'>
-                <div className='footer-link-wrapper'>
-                    <div class='footer-link-items'>
-                        <h2>Social Media</h2>
-                        <Link to='/'>Instagram</Link>
-                        <Link to='/'>Facebook</Link>
-                        <Link to='/'>Youtube</Link>
-                        <Link to='/'>Twitter</Link>
-                    </div>
-                </div>
-            </div></F.DevWrapper></td><td>
-            <F.DevWrapper>
-            <section className="social-media">
+                        <F.Social>Youtube</F.Social>
+                        <F.Social>Twitter</F.Social>
+                </F.DevWrapper>
+                
+                {/* <F.SocialWrap>
+                        <F.Social Link to='/'>Instagram</F.Social>
+                        <F.Social Link to='/'>Facebook</F.Social>
+                        <F.Social Link to='/'>Youtube</F.Social>
+                        <F.Social Link to='/'>Twitter</F.Social>
+                </F.SocialWrap> */}
+
+            {/* <section className="social-media">
                     
                     <div className="social-icons">
                         <Link className="social-icon-link facebook" to="/"
@@ -82,11 +79,11 @@ export default function Footer() {
                         <i class='fab fa-linkedin' />
                         </Link>
 
-                </div>
-            </section></F.DevWrapper></td></tr></table>
+            </div>
+            </section> */}
             <div className="footer-copyright text-center py-3">© 2020 Copyright:
                     <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-                </div>
+            </div>
             </F.FooterWrapper>
         </>
     )

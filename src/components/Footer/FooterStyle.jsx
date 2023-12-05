@@ -20,6 +20,7 @@ export const DevWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1.5%;
 `
 
 export const Dev = styled.div`
@@ -33,16 +34,28 @@ export const Dev = styled.div`
 export const Names = styled.div`
     display: flex;
     flex-direction: row;
-    margin-left: 4vw;
     flex-basis: 100%;
+    margin-left: 4vw;
+    width: 200px;
     text-align: center;
 `
 
 export const NameEach = styled.div`
     font-size: 15px;
-    line-height: 2;
+    line-height: 1.5;
+`
+export const Social = styled.div`
+display: flex-end;
+margin-right: 4vw;
 `
 
+export const SocialWrap = styled.div`
+    flex-direction: column;
 
-
-
+`
+export const Insta = styled.img`
+    width: 5vw;
+    height: 5vw;
+    display: flex-end;
+    margin-right: 4vw;
+`
