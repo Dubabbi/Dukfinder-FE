@@ -170,7 +170,7 @@ export default function Upload() {
                 <U.Select value={selectedCategory} onChange={handleCategoryChange}>
                   <option value="" disabled hidden>습득물 분류</option>
                     <option>
-                      {locations}
+                      {categories}
                     </option>
                 </U.Select>
               </div>
