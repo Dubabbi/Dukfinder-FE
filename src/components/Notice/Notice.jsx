@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import * as S from '../SearchBar/SearchBarStyle';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 import CommonTable from './CommonTable';
 import CommonTableColumn from './CommonTableColumn';
 import CommonTableRow from './CommonTableRow';
 import * as U from '../Upload/UploadStyle';
 import * as N from './NoticeStyle';
 // {new Date(p_createtime).toLocaleDateString()}
+
 const Notice = () => {
   const [findPostData, setFindPostData] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate= useNavigate();
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      setSearchTerm(searchValue);
+      setSearchValue('');
+  };
 
   useEffect(() => {
     const token = localStorage.getItem('key');
@@ -55,7 +66,7 @@ const Notice = () => {
       <CommonTableColumn>
         <Link to={`/notice/${notice.id}`}>{notice.title}</Link>
       </CommonTableColumn>
-      <CommonTableColumn>{notice.created_at}</CommonTableColumn>
+      <CommonTableColumn> {new Date(notice.created_at).toLocaleDateString()}</CommonTableColumn>
       <CommonTableColumn>{notice.view_count}</CommonTableColumn>
     </CommonTableRow>
   ));
@@ -70,19 +81,20 @@ const Notice = () => {
         <N.BoardSearchArea>
           <N.SearchWindow>
             <N.SearchWrap>
-              <N.SearchInput type="search" placeholder="검색어를 입력해주세요." />
-              <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 512 512" onClick={() => {/* Handle icon click */}}>
-                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
-              </svg>
-            </N.SearchWrap>
+          <N.StyledForm onSubmit={handleSubmit}>
+                    <Form.Control type="text"
+                        placeholder="게시글 검색"size="lg" className="form-control" value={searchValue}
+                        onChange={(e) => setSearchValue(e.target.value)}/>
+                        <S.StyledButton type="submit" variant="none"><FaSearch size={20} /></S.StyledButton>
+                </N.StyledForm></N.SearchWrap>
           </N.SearchWindow>
         </N.BoardSearchArea>
-        <div>
+        <div><hr/>
           {loggedIn ? (
             <CommonTable headersName={['No', '제목', '등록일', '조회수']}>{items}</CommonTable>
           ) : (
             <p>Loading...</p>
-          )}
+          )}<hr/>
         </div>
       </N.Section>
     </U.MainWrapper>
