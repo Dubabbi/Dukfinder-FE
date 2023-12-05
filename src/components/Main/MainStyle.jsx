@@ -10,8 +10,16 @@ export const MainContainer = styled.div`
 export const Header = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     margin-top: 60px;
     margin-bottom: 60px;
+`
+
+export const Logo = styled.img`
+    width: 5vw;
+    height: 5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
 `
 
 export const Title = styled.div`
