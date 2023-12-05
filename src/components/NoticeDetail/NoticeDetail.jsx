@@ -1,29 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import * as N from '../Notice/NoticeStyle';
 import * as D from './NoticeDetailStyle';
+import * as U from '../Upload/UploadStyle';
 
-const VocViewWrapper = styled.div`
-  width: 60%;
-  margin: 0 auto;
-`;
-
-const VocViewRow = styled.div`
-  margin: 10px 0;
-  display: flex;
-`;
-
-const Label = styled.label`
-  margin: 10px 0;
-  width: 30%;
-  font-weight: bold;
-`;
-
-const Content = styled.div`
-  margin: 10px 0;
-  width: 70%;
-`;
 
 function NoticeDetail(props) {
   const { n_id } = useParams();
@@ -33,27 +15,21 @@ function NoticeDetail(props) {
 
 
   useEffect(() => {
-      const token = localStorage.getItem('key');
-      if (token) {
-          loadPost(token);
-          
-      } else {
-          setLoggedIn(false);
-      }
-  }, []);
+    const token = localStorage.getItem('key');
+    console.log('토큰 값:', token);
 
-  const loadPost = (token) => {
-      axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/userinfo/`, {
-          headers: {
-              Authorization: `Token ${token}`
-          }
+    if (token) {
+      axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/user/userinfo/', {
+        headers: {
+          Authorization: `Token ${token}`
+        }
       })
       .then(response => {
         setLoggedIn(true);
 
         axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/notice/${n_id}`, {
           headers: {
-              Authorization: `Token ${token}`
+            Authorization: `Token ${token}`
           }
         })
         .then(response => {
@@ -63,38 +39,61 @@ function NoticeDetail(props) {
         })
         .catch(error => {
           console.error('Error fetching data: ', error);
+        });
+      })
+      .catch(error => {
+        setLoggedIn(false);
+        console.error('Invalid token:', error);
+        navigate.push('/'); // Redirect to the login page if token is invalid
       });
-  });
-
-  
-  if (!post) {
-      return <div>Loading...</div>; // 데이터가 로딩 중일 때 표시할 내용
-  }
-
-  if (!loggedIn) {
-      return <Link to="../login" />; // 로그인되지 않았다면 로그인 페이지로 리다이렉트
-  }
-
+    } else {
+      setLoggedIn(false);
+      // navigate.push('/'); // Redirect to the login page if token is not present
+    }
+  }, [navigate]);
   return (
-    <>
-      {loggedIn && (
-        <VocViewWrapper>
-          <VocViewRow>
-            <Label>제목</Label>
-            <Label>{notice.title}</Label>
-          </VocViewRow>
-          <VocViewRow>
-            <Label>작성일</Label>
-            <Label>{notice.created_at}</Label>
-          </VocViewRow>
-          <VocViewRow>
-            <Label>내용</Label>
-            <Content>{notice.content}</Content>
-          </VocViewRow>
-        </VocViewWrapper>
-      )}
-    </>
+
+    <U.MainWrapper>
+      <N.Section>
+        <N.PageTitle>
+          <N.TitleText>공지사항</N.TitleText>
+        </N.PageTitle>
+    <D.BoardViewWrap>
+      <D.BoardView>
+      <D.Title>{notice.title}</D.Title>
+          <D.Info>
+            <D.InfoItem>
+              <D.InfoItemText>{notice.id}</D.InfoItemText>
+            </D.InfoItem>
+            <D.InfoItem>
+              <D.InfoItemText>작성일</D.InfoItemText>
+              <D.InfoItemText>: {new Date(notice.created_at).toLocaleDateString()}</D.InfoItemText>
+            </D.InfoItem>
+            <D.InfoItem>
+              <D.InfoItemText>조회</D.InfoItemText>
+              <D.InfoItemText>{notice.view_count}</D.InfoItemText>
+            </D.InfoItem>
+            </D.Info>
+            <D.Cont>
+              {notice.content && notice.content.split('\n').map((content, index) => (
+                <React.Fragment key={index}>
+                  {content}
+                  {index !== notice.content.split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </D.Cont>
+
+        </D.BoardView>
+        <D.BtWrap>
+          <D.BtLink as={Link} to="/notice">
+            목록
+          </D.BtLink>
+          <D.BtLink href="edit.html">수정</D.BtLink>
+        </D.BtWrap>
+      </D.BoardViewWrap>
+    </N.Section>
+    </U.MainWrapper>
   );
 }
-}
+
 export default NoticeDetail;
