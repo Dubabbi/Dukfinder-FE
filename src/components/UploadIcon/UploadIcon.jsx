@@ -7,7 +7,7 @@ export default function UploadIcon() {
                 src={Icon} 
                 width="50vw" 
                 height="50vw" 
-                style={{position: 'absolute', right: 20, bottom: 20,}}/>
+                style={{position: 'fixed', right: 20, bottom: 20,}}/>
         </>
     )
 }
