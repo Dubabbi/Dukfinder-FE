@@ -15,13 +15,16 @@ export const Logo = styled.div`
 export const DevWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
 `
 
 export const Dev = styled.div`
-    font-size: 1.5vw;
+    font-size: 15px;
     font-weight: bold;
-    flex-basis: 10%;
+    width: 100px;
+    text-align: center;
+    
 `
 
 export const Names = styled.div`
@@ -29,8 +32,9 @@ export const Names = styled.div`
     flex-direction: row;
     margin-left: 5vw;
     flex-basis: 100%;
+    text-align: center;
 `
 
 export const NameEach = styled.div`
-    font-size: 1.5vw;
+    font-size: 15px;
 `

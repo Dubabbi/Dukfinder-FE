@@ -78,7 +78,7 @@ function LostDetail(props) {
                     <LostDetailCard post={post}/>
                 </D.DetailContainer>
                 <D.line></D.line>
-                {/* <CommentMain postId={p_id}/> */}
+                <CommentMain postId={p_id} path="lost_posts"/>
                 <D.ButtonContainer>
                     <D.ButtonStyle variant="warning" type="submit" as={Link} to={`../lost`}>목록으로</D.ButtonStyle>
                 </D.ButtonContainer>

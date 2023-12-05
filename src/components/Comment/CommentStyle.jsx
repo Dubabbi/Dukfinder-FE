@@ -34,6 +34,11 @@ export const StyledButton = styled(Button)`
       }
 `;
 
+export const CommentNot = styled.div`
+      font-size: 17px;
+      margin: 30px 60px;
+      color: gray;
+`
 
 export const StyledForm = styled(Form)`
     width: 1200px;
@@ -64,7 +69,7 @@ export const CommentListStyle = styled(Container)`
 export const UserRow = styled(Row)`
     width: 1200px;
     align-items: center;
-    font-size: 15px;
+    font-size: 17px;
     padding: 0px 0px 10px 0px;
 
 `
