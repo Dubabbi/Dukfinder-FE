@@ -13,6 +13,7 @@ import Nav from './components/Navbar/Nav';
 import Footer from './components/Footer/Footer';
 import LostDetailPage from './pages/LostDetail';
 import SettingPage from './pages/Setting';
+import ChangePassword from './components/Mypage/PwChange';
 
 export default function Router() {
     return (
@@ -32,6 +33,7 @@ export default function Router() {
                     <Route path="/mypage/setting" element={<SettingPage />}/>
                     <Route path="/signin" element={<SigninPage />}/>
                     <Route path="/upload" element={<UploadPage />}/>
+                    <Route path="/mypage/setting/pw" element={<ChangePassword />}/>
                 </Routes>
             <Footer/>
             </BrowserRouter>
