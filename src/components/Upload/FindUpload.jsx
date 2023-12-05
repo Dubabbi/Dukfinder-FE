@@ -7,6 +7,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaCalendarAlt } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
+import { FiCalendar } from 'react-icons/fi';
 
 const placesList = [
   "정문·대학본부", "후문", "인문사회관", "대강의동", "차마리사기념관",
@@ -42,13 +43,13 @@ const PostCreationPage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const navigate = useNavigate();
-  
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = `${date.getMonth() + 1}`.padStart(2, '0');
-    const day = `${date.getDate()}`.padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
+
+  // const formatDate = (date) => {
+  //   const year = date.getFullYear();
+  //   const month = `${date.getMonth() + 1}`.padStart(2, '0');
+  //   const day = `${date.getDate()}`.padStart(2, '0');
+  //   return `${year}-${month}-${day}`;
+  // };
 
   const handleSubmit = async () => {
 
@@ -56,11 +57,11 @@ const PostCreationPage = () => {
 
     if (token) {
       try {
-        const formattedDate = formatDate(selectedDate); 
+        // const formattedDate = formatDate(selectedDate);
         const newPost = {
           title: title,
           content: content,
-          date_select: formattedDate,
+          date_select: selectedDate,
           category: selectedCategory,
           LostAndFound: null, // 해당 필드는 공란으로 처리
           location: selectedPlace
@@ -78,18 +79,23 @@ const PostCreationPage = () => {
 
         // 요청 성공 시 실행되는 로직 (예: 페이지 이동 등)
         console.log('포스트가 등록되었습니다.', response.data);
-        console.log(response.data);
         navigate('../find');
-     
+
+        console.log(response.data);
+
 
       } catch (error) {
         // 요청 실패 시 실행되는 로직
         console.error('포스트 등록 실패:', error);
-        }
+      }
     } else {
       console.log('토큰이 없습니다. 로그인이 필요합니다.');
       // 토큰이 없는 경우 처리
     }
+  };
+
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
   };
 
 
@@ -135,13 +141,18 @@ const PostCreationPage = () => {
                 <U.Label>일자</U.Label>
                 {/* customInput 컴포넌트 사용 */}
                 <U.DatePickerWrapper>
-                  <div className='App'>
-                    <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)} />
-                  </div>
-                  <DatePicker
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    customInput={<CustomInput />} />
+                 
+                  <label htmlFor="datePicker">
+                     날짜 선택:
+                  </label>
+                   <U.DateCalendar
+                    type="date"
+                    id="datePicker"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                  />
+                  
+                 
                 </U.DatePickerWrapper>
               </div>
             </U.Inline>
@@ -159,7 +170,7 @@ const PostCreationPage = () => {
                 <U.Label>이미지</U.Label>
                 <U.ImgButton>
                   <input
-                  value={selectedFile}
+                    value={selectedFile}
                     type="file"
                     style={{ display: 'none' }}
                     onChange={(e) => {
@@ -170,12 +181,9 @@ const PostCreationPage = () => {
                   />
                   파일선택
                 </U.ImgButton>
-
               </U.InlineImg>
-
-
             </div>
-            <U.SubmitButton  onSubmit={() => handleSubmit(event)} type="submit" value="저장"  />
+            <U.SubmitButton type="submit" value="저장" />
           </U.SecondForm>
         </U.Wrapper>
       </N.Section>
