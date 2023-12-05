@@ -18,3 +18,21 @@ export const TextWrap = styled.div`
   line-height: 1.6;
 `;
 
+export const SubmitButton = styled.button`
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  font-size: 20px;
+  background: #bbb;
+  width: 20%;
+  margin-left: 40%;
+  color: #0d0d0d;
+  border-radius: 5px;
+  font-weight: bold;
+  padding: 18px 32px;
+  &:hover {
+    background: #141414ae;
+    border-radius: 5px;
+    color: #ccc;
+  }
+`;

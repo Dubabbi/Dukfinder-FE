@@ -94,9 +94,9 @@ function NoticeDetail() {
             <VocViewLabel>내용</VocViewLabel>
             <VocViewContent>{notice.content}</VocViewContent>
           </VocViewRow>
-          <VocViewGoListBtn as={Link} to="/notice">
+          <D.SubmitButton type="submit" as={Link} to="/notice">
             목록으로
-          </VocViewGoListBtn>
+          </D.SubmitButton>
         </N.Section>
       </N.NoticeWrapper>
     </VocViewWrapper>
