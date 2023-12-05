@@ -135,9 +135,9 @@ const Signin = () => {
             <S.TextWrap>
             가입을 완료했습니다.<br />
             🐤Dukfinder🐤에서 다양한 경험을<br />시작해 보세요!<br />
-            버튼을 누르면 메인 화면으로 이동합니다.
+            버튼을 누르면 로그인 페이지로 이동합니다.
           </S.TextWrap></L.ContentWrap>
-          <a href='/'>
+          <a href='/login'>
             <S.BottomButton onClick>
                 확인
             </S.BottomButton>
@@ -219,7 +219,7 @@ const Signin = () => {
           </L.ErrorMessageWrap>
         </L.ContentWrap>
           <L.BottomButton onClick={onClickConfirmButton} disabled={notAllow}>
-                {signupComplete ? '인증코드 보내기' : '인증코드 보내기'}
+                {signupComplete ? '회원가입' : '회원가입'}
             </L.BottomButton>
           </div>
         )}
