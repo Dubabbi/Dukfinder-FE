@@ -1,8 +1,9 @@
 import * as M from './MainStyle';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-export default function LostCard() {
+export default function LostCard({ searchTerm }) {
     const [data, setData] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false); // 로그인 여부 상태
   
@@ -40,9 +41,12 @@ export default function LostCard() {
       }
     }, []);
   
+    const filteredData = searchTerm ? data.filter(item => item.title.includes(searchTerm)) : data;
+
     return (
       loggedIn ? (
-        data.map((item, index) => (
+        filteredData.map((item, index) => (
+          <Link to={`/lost/${item.id}`}>
           <M.Card key={index}>
             <M.Image src={item.head_image} />
             <M.CardTitle>{item.title}</M.CardTitle>
@@ -51,6 +55,7 @@ export default function LostCard() {
               <M.Tag>{item.date_select}</M.Tag>
             </M.TagWrapper>
           </M.Card>
+          </Link>
         ))
       ) : (
         <p>Please log in to view posts</p>
