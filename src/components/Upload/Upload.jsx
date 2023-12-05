@@ -49,36 +49,40 @@ export default function Upload() {
   // 등록 버튼 클릭 시 서버로 데이터 전송
   const handleSubmit = async () => {
     const token = localStorage.getItem('key');
-
+  
     if (token) {
       try {
+        const formData = new FormData();
+        formData.append('title', title);
+        formData.append('content', content);
+        formData.append('location', selectedLocation);
+        formData.append('category', selectedCategory);
+        formData.append('date', selectedDate);
+        formData.append('file', selectedFile); // Append the selected file
+  
         const response = await axios.post(
           'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/create',
-          {
-            title: title,
-            content: content,
-            location: selectedLocation,
-            category: selectedCategory,
-            date: selectedDate,
-          },
+          formData,
           {
             headers: {
-              Authorization: `Token ${token}`
+              Authorization: `Token ${token}`,
+              'Content-Type': 'multipart/form-data',
             },
           }
         );
-
+  
         console.log('글 작성 성공:', response);
-        // 성공적으로 등록 후 리디렉션 또는 다른 동작 수행
+        // Additional logic after successful submission
       } catch (error) {
         console.error('글 작성 실패:', error);
-        // 에러 처리, 메시지 표시 또는 다른 동작 수행
+        // Handle error, show message, or perform other actions
       }
     } else {
       console.log('토큰이 없습니다.');
       navigate('/');
     }
   };
+  
 
   useEffect(() => {
     const token = localStorage.getItem('key');
@@ -129,6 +133,8 @@ export default function Upload() {
     {category.name}
   </option>
 ));
+
+
 
   return (
     <U.MainWrapper>
@@ -192,12 +198,24 @@ export default function Upload() {
               <U.Textarea value={content} onChange={handleContentChange}></U.Textarea>
             </div>
             <div>
-              <U.InlineImg>
-                <U.Label>이미지</U.Label>
-                <U.ImgButton onClick={() => console.log('파일 선택')}>
-                  파일선택
-                </U.ImgButton>
-              </U.InlineImg>
+            <U.InlineImg>
+    <U.Label>이미지</U.Label>
+    <U.ImgButton>
+      <input
+        type="file"
+        style={{ display: 'none' }}
+        onChange={(e) => {
+          const file = e.target.files[0];
+          console.log('Selected File:', file);
+          setSelectedFile(file);
+        }}
+  />
+  파일선택
+</U.ImgButton>
+
+  </U.InlineImg>
+
+
             </div>
             <U.SubmitButton type="submit" value="저장"/>
           </U.SecondForm>
