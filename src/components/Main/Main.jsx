@@ -2,12 +2,14 @@ import * as M from './MainStyle';
 import FindCard from './FindCards';
 import LostCard from './LostCards'
 import SearchBar from './../SearchBar/SearchBar';
+import Logo from './../../assets/icon/duklogo.svg';
 
 export default function Main() {
     return (
         <>
             <M.MainContainer>
                 <M.Header>
+                    <M.Logo src={Logo}/>
                     <M.Title>Dukfinder</M.Title>
                     <SearchBar/>
                 </M.Header>
