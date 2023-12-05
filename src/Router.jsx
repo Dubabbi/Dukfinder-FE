@@ -20,7 +20,8 @@ export default function Router() {
             <BrowserRouter>
             <Nav/>
                 <Routes>
-                    <Route path="/" element={<MainPage />}/>
+                    <Route path="/" element={<LoginPage />}/>
+                    <Route path="/main" element={<MainPage />}/>
                     <Route path="/lost" element={<LostPage />}/>
                     <Route path="/lost/:p_id" element={<LostDetailPage/>}/>
                     <Route path="/find" element={<FindPage />}/>
@@ -29,7 +30,6 @@ export default function Router() {
                     <Route path="/notice/:n_id" element={<NoticeDetailPage />}/>
                     <Route path="/mypage" element={<Mypage />}/>
                     <Route path="/mypage/setting" element={<SettingPage />}/>
-                    <Route path="/login" element={<LoginPage />}/>
                     <Route path="/signin" element={<SigninPage />}/>
                     <Route path="/upload" element={<UploadPage />}/>
                 </Routes>
