@@ -1,18 +1,37 @@
 // Upload.jsx
 
+// Upload.jsx
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
+import './Upload.css'
 import './Upload.css'
 import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {FaCalendarAlt} from 'react-icons/fa';
 import * as U from './UploadStyle'; 
 import * as N from '../Notice/NoticeStyle'; 
+import * as N from '../Notice/NoticeStyle'; 
 import styled from 'styled-components';
 import { setDate } from 'date-fns';
+import { setDate } from 'date-fns';
 
+const CustomInput = ({ value, onClick }) => (
+  <div className='input-group'>
+    <input type='text' className='form-control' value={value} onClick={onClick} readOnly />
+    <U.Inline><div className='input-group-append'></div>
+      <div><span className='input-group-text'>
+        <FaCalendarAlt />
+      </span></div></U.Inline>
+    
+  </div>
+);
+
+
+export default function Upload() {
+  const [loggedIn, setLoggedIn] = useState(false);
 const CustomInput = ({ value, onClick }) => (
   <div className='input-group'>
     <input type='text' className='form-control' value={value} onClick={onClick} readOnly />
@@ -33,12 +52,18 @@ export default function Upload() {
   const [content, setContent] = useState('');
   const [location, setLocation] = useState([]);
   const [category, setCategory] = useState([]);
+  const [location, setLocation] = useState([]);
+  const [category, setCategory] = useState([]);
   const navigate = useNavigate();
 
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleLocationChange = (e) => setSelectedLocation(e.target.value);
   const handleCategoryChange = (e) => setSelectedCategory(e.target.value);
   const handleContentChange = (e) => setContent(e.target.value);
+
+  const [selectedDate, setSelectedDate] = useState(null);
+
+
 
   const [selectedDate, setSelectedDate] = useState(null);
 
@@ -80,6 +105,7 @@ export default function Upload() {
 
   useEffect(() => {
     const token = localStorage.getItem('key');
+    console.log('토큰 값:', token);
     console.log('토큰 값:', token);
 
     if (token) {
@@ -128,6 +154,8 @@ export default function Upload() {
   </option>
 ));
 
+  ));
+
   return (
     <U.MainWrapper>
       <N.Section>
@@ -145,6 +173,11 @@ export default function Upload() {
                 placeholder="습득한 물건명"
                 value={title} 
                 onChange={handleTitleChange} />
+                <U.Input 
+                type="text"
+                placeholder="습득한 물건명"
+                value={title} 
+                onChange={handleTitleChange} />
               </U.FormGroup>
             </div>
             <U.Inline>
@@ -152,6 +185,8 @@ export default function Upload() {
                 <U.Label>장소</U.Label>
                 <U.Select value={selectedLocation} onChange={handleLocationChange}>
                   <option value="" disabled hidden>장소를 선택하세요</option>
+                    <option>
+                      {locations}
                     <option>
                       {locations}
                     </option>
@@ -169,7 +204,15 @@ export default function Upload() {
               <div>
                 <U.Label>일자</U.Label>
                 {/* customInput 컴포넌트 사용 */}
+                {/* customInput 컴포넌트 사용 */}
                 <U.DatePickerWrapper>
+                <div className='App'>
+      <DatePicker selected={selectedDate} onChange={date => setDate(date)}/>
+    </div>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  customInput={<CustomInput />}/>
                 <div className='App'>
       <DatePicker selected={selectedDate} onChange={date => setDate(date)}/>
     </div>
