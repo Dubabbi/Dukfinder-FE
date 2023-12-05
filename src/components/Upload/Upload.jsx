@@ -1,89 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import * as N from '../Notice/NoticeStyle';
 import * as U from './UploadStyle'; 
-import styled from 'styled-components';
+import * as N from '../Notice/NoticeStyle'; 
+import DatePicker from 'react-datepicker';
+import './Upload.css'
+import React, { useState } from 'react';
+import axios from 'axios';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {FaCalendarAlt} from 'react-icons/fa';
 
-const Upload = () => {
-  const [selectedLocation, setSelectedLocation] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedDate, setSelectedDate] = useState(null);
+const placesList = [
+  "정문·대학본부", "후문", "인문사회관", "대강의동", "차마리사기념관",
+  "학생회관", "도서관·대학원", "예술관", "자연관", "약학관", "기타"
+];
+
+const categoriesList = [
+  "전자기기", "지갑,카드", "악세사리", "화장품", "기타"
+];
+
+const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
+    <div className='input-group'>
+      <input type='text' className='form-control' value={value} onClick={onClick} readOnly ref={ref} />
+      <U.Inline>
+        <div className='input-group-append'>
+          <span className='input-group-text'>
+            <FaCalendarAlt />
+          </span>
+        </div>
+      </U.Inline>
+    </div>
+  ));
+
+const PostCreationPage = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [locations, setLocations] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const navigate = useNavigate();
+  const [selectedDate, setSelectedDate] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedPlace, setSelectedPlace] = useState('');
 
-  // 이벤트 핸들러들
-  const handleTitleChange = (e) => setTitle(e.target.value);
-  const handleLocationChange = (e) => setSelectedLocation(e.target.value);
-  const handleCategoryChange = (e) => setSelectedCategory(e.target.value);
-  const handleContentChange = (e) => setContent(e.target.value);
-
-  // 등록 버튼 클릭 시 서버로 데이터 전송
-  const handleSubmit = async () => {
-    const token = localStorage.getItem('key');
-
-    if (token) {
-      try {
-        // Get the corresponding location string
-        const selectedLocationString = locations.find(loc => loc.id === selectedLocation)?.name || '';
-        // Get the corresponding category string
-        const selectedCategoryString = categories.find(cat => cat.id === selectedCategory)?.name || '';
-
-        const response = await axios.post(
-          'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/create',
-          {
-            title: title,
-            content: content,
-            location: selectedLocationString,
-            category: selectedCategoryString,
-            date: selectedDate,
-          },
-          {
-            headers: {
-              Authorization: `Token ${token}`
-            },
-          }
-        );
-
-        console.log('글 작성 성공:', response);
-        // 성공적으로 등록 후 리디렉션 또는 다른 동작 수행
-      } catch (error) {
-        console.error('글 작성 실패:', error);
-        // 에러 처리, 메시지 표시 또는 다른 동작 수행
-      }
-    } else {
-      console.log('토큰이 없습니다.');
-      navigate('/');
-    }
+  const handleSubmit = () => {
+    // 입력된 정보로 POST 요청 보내기
+    axios.post('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/create/', {
+      title: title,
+      content: content,
+      date_select: selectedDate,
+      category: selectedCategory,
+      LostAndFound: '', // 해당 필드는 공란으로 처리
+      location: selectedPlace
+    })
+      .then(response => {
+        // 요청 성공 시 실행되는 로직 (예: 페이지 이동 등)
+        console.log('포스트가 등록되었습니다.', response.data);
+      })
+      .catch(error => {
+        // 요청 실패 시 실행되는 로직
+        console.error('포스트 등록 실패:', error);
+      });
   };
-
-
-  // 페이지 로딩 시 필요한 데이터 초기화
-  useEffect(() => {
-    const token = localStorage.getItem('key');
-
-    if (token) {
-      // 장소와 분류 카테고리 목록 가져오기
-      axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/category/location', {
-        headers: { Authorization: `Token ${token}` }
-      })
-        .then(response => setLocations(response.data))
-        .catch(error => console.error('Error fetching locations:', error));
-
-      axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/category/<str:category>', {
-        headers: { Authorization: `Token ${token}` }
-      })
-        .then(response => setCategories(response.data))
-        .catch(error => console.error('Error fetching categories:', error));
-    } else {
-      navigate('/');
-    }
-  }, [navigate]);
 
   return (
     <U.MainWrapper>
@@ -97,49 +68,43 @@ const Upload = () => {
             <div>
               <U.FormGroup>
                 <U.Label style={{ top: '10%' }}>제목</U.Label>
-                <U.Input value={title} onChange={handleTitleChange} />
+                <U.Input 
+                type="text"
+                placeholder="습득한 물건명"
+                value={title} 
+                onChange={(e) => setTitle(e.target.value)} />
               </U.FormGroup>
             </div>
             <U.Inline>
               <div>
                 <U.Label>장소</U.Label>
-                <U.Select value={selectedLocation} onChange={handleLocationChange}>
+                <U.Select value={selectedPlace} onChange={(e) => setSelectedPlace(e.target.value)}>
                   <option value="" disabled hidden>장소를 선택하세요</option>
-                    <option key={location.id} value={location.name}>정문·대학본부</option>
-                    <option key={location.id} value={location.name}>후문</option>
-                    <option key={location.id} value={location.name}>대강의동</option>
-                    <option key={location.id} value={location.name}>차마리사기념관</option>
-                    <option key={location.id} value={location.name}>학생회관</option>
-                    <option key={location.id} value={location.name}>도서관·대학원</option>
-                    <option key={location.id} value={location.name}>예술관</option>
-                    <option key={location.id} value={location.name}>자연관</option>
-                    <option key={location.id} value={location.name}>약학관</option>
-                    <option key={location.id} value={location.name}>기타</option>
+                  {placesList.map((place, index) => (
+                  <option key={index} value={place}>{place}</option>
+                  ))}
                 </U.Select>
               </div>
               <div>
                 <U.Label>분류</U.Label>
-                <U.Select value={selectedCategory} onChange={handleCategoryChange}>
-                  <option value="" disabled hidden>분류를 선택하세요</option>
-                  {categories.map(category => (
-                    <option key={category.id} value={category.name}>
-                      {category.name}
-                    </option>
+                <U.Select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+                  <option value="" disabled hidden>습득물 분류</option>
+                  {categoriesList.map((category, index) => (
+                    <option key={index} value={category}>{category}</option>
                   ))}
                 </U.Select>
               </div>
               <div>
                 <U.Label>일자</U.Label>
+                {/* customInput 컴포넌트 사용 */}
                 <U.DatePickerWrapper>
-                  <DatePicker
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    dateFormat="yyyy-MM-dd"
-                    showYearDropdown
-                    scrollableYearDropdown
-                    yearDropdownItemNumber={15}
-                    styles={{ width: '100px;' }}
-                  />
+                <div className='App'>
+      <DatePicker selected={selectedDate} onChange={date => setDate(date)}/>
+    </div>
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  customInput={<CustomInput />}/>
                 </U.DatePickerWrapper>
               </div>
             </U.Inline>
@@ -150,17 +115,29 @@ const Upload = () => {
           <U.SecondForm onSubmit={handleSubmit}>
             <div>
               <U.Label>message</U.Label>
-              <U.Textarea value={content} onChange={handleContentChange}></U.Textarea>
+              <U.Textarea value={content} onChange={(e) => setContent(e.target.value)}></U.Textarea>
             </div>
             <div>
-              <U.InlineImg>
-                <U.Label htmlFor="image">이미지</U.Label>
-                <U.ImgButton onClick={() => console.log('파일 선택')}>
-                  파일선택
-                </U.ImgButton>
-              </U.InlineImg>
+            <U.InlineImg>
+    <U.Label>이미지</U.Label>
+    <U.ImgButton>
+      <input
+        type="file"
+        style={{ display: 'none' }}
+        onChange={(e) => {
+          const file = e.target.files[0];
+          console.log('Selected File:', file);
+          setSelectedFile(file);
+        }}
+  />
+  파일선택
+</U.ImgButton>
+
+  </U.InlineImg>
+
+
             </div>
-            <U.SubmitButton type="submit" value="저장"/>
+            <U.SubmitButton type="submit" value="저장" onClick={handleSubmit}/>
           </U.SecondForm>
         </U.Wrapper>
       </N.Section>
@@ -168,4 +145,4 @@ const Upload = () => {
   );
 };
 
-export default Upload;
+export default PostCreationPage;
