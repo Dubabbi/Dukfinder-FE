@@ -78,10 +78,6 @@ export const Select = styled.select`
 
 
 export const DatePickerWrapper = styled.div`
-
-`;
-
-export const DatePickerStyled = styled(DatePicker)`
   background-color: #eeeeee;
   border: 1px #ddd solid;
   height: 40px;
@@ -89,22 +85,15 @@ export const DatePickerStyled = styled(DatePicker)`
   font-size: 2rem;
   font-family: inherit;
   width: 300px;
-
-  .react-datepicker-wrapper {
-    width: 100%;
-  }
-
-  .react-datepicker__input-container {
-    width: 100%;
-    input {
-      border: none;
-      padding: 10px;
-      font-size: 2rem;
-      font-family: inherit;
-      border-radius: 5px;
-    }
-  }
+  text-align: left;
+  padding: 8px 7px;
 `;
+
+export const DateCalendar = styled.input`
+  padding: 0 10px;
+`
+
+
 
 export const Textarea = styled.textarea`
   background-color: #eeeeee;
