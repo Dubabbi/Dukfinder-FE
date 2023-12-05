@@ -3,15 +3,18 @@ import FindCard from './FindCards';
 import LostCard from './LostCards'
 import SearchBar from './../SearchBar/SearchBar';
 import Logo from './../../assets/icon/duklogo.svg';
+import { useState } from 'react';
 
 export default function Main() {
+    const [searchTerm, setSearchTerm] = useState('');
+
     return (
         <>
             <M.MainContainer>
                 <M.Header>
                     <M.Logo src={Logo}/>
                     <M.Title>Dukfinder</M.Title>
-                    <SearchBar/>
+                    <SearchBar setSearchTerm={setSearchTerm}/>
                 </M.Header>
 
                 <M.SubTitleWrapper>
@@ -21,10 +24,10 @@ export default function Main() {
                  
                 <M.SubWrapper>
                     <M.CardWrapper>
-                        <FindCard />
+                        <FindCard searchTerm={searchTerm}/>
                     </M.CardWrapper>
                     <M.CardWrapper>
-                        <LostCard />
+                        <LostCard searchTerm={searchTerm}/>
                     </M.CardWrapper>
                 </M.SubWrapper>
 

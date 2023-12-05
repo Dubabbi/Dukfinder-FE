@@ -1,8 +1,10 @@
 import * as M from './MainStyle';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import SearchBar from './../SearchBar/SearchBar';
 
-export default function FindCard() {
+export default function FindCard({ searchTerm }) {
     const [data, setData] = useState([]);
     const [loggedIn, setLoggedIn] = useState(false); // 로그인 여부 상태
   
@@ -39,10 +41,13 @@ export default function FindCard() {
         setLoggedIn(false); // 토큰이 없으면 로그인되지 않은 상태로 설정
       }
     }, []);
+
+    const filteredData = searchTerm ? data.filter(item => item.title.includes(searchTerm)) : data;
   
     return (
       loggedIn ? (
-        data.map((item, index) => (
+        filteredData.map((item, index) => (
+          <Link to={`/find/${item.id}`}>
           <M.Card key={index}>
             <M.Image src={item.head_image} />
             <M.CardTitle>{item.title}</M.CardTitle>
@@ -51,6 +56,7 @@ export default function FindCard() {
               <M.Tag>{item.date_select}</M.Tag>
             </M.TagWrapper>
           </M.Card>
+          </Link>
         ))
       ) : (
         <p>Please log in to view posts</p>

@@ -7,7 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 
 function FindDetailCard(props) {
     const { p_id } = useParams();
-    // const post = data.results.find(post => post.p_id === p_id);
+    
     const { post } = props;
 
     const [show, setShow] = useState(false);

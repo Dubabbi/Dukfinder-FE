@@ -1,6 +1,7 @@
 import * as M from './../Main/MainStyle';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function MyLostCard() {
     const [data, setData] = useState([]);
@@ -43,6 +44,7 @@ export default function MyLostCard() {
     return (
       loggedIn ? (
         data.map((item, index) => (
+          <Link to={`/lost/${item.id}`}>
           <M.Card key={index}>
             <M.Image src={item.head_image} />
             <M.CardTitle>{item.title}</M.CardTitle>
@@ -51,6 +53,7 @@ export default function MyLostCard() {
               <M.Tag>{item.date_select}</M.Tag>
             </M.TagWrapper>
           </M.Card>
+          </Link>
         ))
       ) : (
         <p>Please log in to view posts</p>
