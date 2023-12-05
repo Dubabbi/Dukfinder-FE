@@ -9,7 +9,6 @@ import CommonTableColumn from './CommonTableColumn';
 import CommonTableRow from './CommonTableRow';
 import * as U from '../Upload/UploadStyle';
 import * as N from './NoticeStyle';
-// {new Date(p_createtime).toLocaleDateString()}
 
 const Notice = () => {
   const [findPostData, setFindPostData] = useState([]);
