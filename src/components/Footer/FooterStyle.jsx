@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const FooterWrapper = styled.div`
     padding: 4vh;
-    padding-bottom: 2vh;
+    padding-bottom: 1vh;
     position : absolute;
     background-color: #FFE665;
     width: 100vw;
@@ -26,7 +26,7 @@ export const DevWrapper = styled.div`
 export const Dev = styled.div`
     font-size: 15px;
     font-weight: bold;
-    width: 200px;
+    width: 180px;
     text-align: center;
     margin-left: 4vw;
 `
