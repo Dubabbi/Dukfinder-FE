@@ -1,4 +1,5 @@
 // UploadStyle.jsx
+import DatePicker from 'react-datepicker';
 import styled from 'styled-components';
 
 export const MainWrapper = styled.div`
@@ -71,7 +72,8 @@ export const Select = styled.select`
   width: 300px;
 `;
 
-export const DatePicker = styled.input`
+
+export const DatePickerWrapper = styled.div`
   background-color: #eeeeee;
   border: 1px #ddd solid;
   height: 40px;
@@ -79,6 +81,47 @@ export const DatePicker = styled.input`
   font-size: 2rem;
   font-family: inherit;
   width: 300px;
+  display: flex;
+  align-items: center;
+
+  .react-datepicker-wrapper {
+  }
+
+  .react-datepicker__input-container {
+    width: 100%;
+    input {
+      border: none;
+      padding: 10px;
+      font-size: 2rem;
+      font-family: inherit;
+      border-radius: 5px;
+    }
+  }
+`;
+
+export const DatePickerStyled = styled(DatePicker)`
+  background-color: #eeeeee;
+  border: 1px #ddd solid;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 2rem;
+  font-family: inherit;
+  width: 300px;
+
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+
+  .react-datepicker__input-container {
+    width: 100%;
+    input {
+      border: none;
+      padding: 10px;
+      font-size: 2rem;
+      font-family: inherit;
+      border-radius: 5px;
+    }
+  }
 `;
 
 export const Textarea = styled.textarea`
@@ -126,32 +169,6 @@ export const ImgButton = styled.button`
   &:hover {
     background: #151515ae;
     border-radius: 10px;
-  }
-`;
-
-export const DatePickerWrapper = styled.div`
-  background-color: #eeeeee;
-  border: 1px #ddd solid;
-  height: 40px;
-  border-radius: 5px;
-  font-size: 2rem;
-  font-family: inherit;
-  width: 300px;
-  display: flex;
-  align-items: center;
-
-  .react-datepicker-wrapper {
-  }
-
-  .react-datepicker__input-container {
-    width: 100%;
-    input {
-      border: none;
-      padding: 10px;
-      font-size: 2rem;
-      font-family: inherit;
-      border-radius: 5px;
-    }
   }
 `;
 
