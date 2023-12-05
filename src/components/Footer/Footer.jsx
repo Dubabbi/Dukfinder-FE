@@ -9,11 +9,17 @@ export default function Footer() {
             <F.FooterWrapper>
                 <F.DevWrapper>
                     <F.Dev>Front-end</F.Dev>
-                    <F.Names>{Front}</F.Names>
+                    <F.Names>
+                    {Front.map((developer, index) => (
+                    <F.NameEach key={index}>{developer} &nbsp;</F.NameEach>
+                    ))}</F.Names>
                 </F.DevWrapper>
                 <F.DevWrapper>
                     <F.Dev>Back-end</F.Dev>
-                    <F.Names>{Back}</F.Names>
+                    <F.Names>
+                    {Back.map((developer, index) => (
+                    <F.NameEach key={index}>{developer} &nbsp;</F.NameEach>
+                    ))}</F.Names>
                 </F.DevWrapper>
             </F.FooterWrapper>
         </>

@@ -12,6 +12,7 @@ import UploadPage from './pages/Upload';
 import Nav from './components/Navbar/Nav';
 import Footer from './components/Footer/Footer';
 import LostDetailPage from './pages/LostDetail';
+import SettingPage from './pages/Setting';
 
 export default function Router() {
     return (
@@ -27,12 +28,13 @@ export default function Router() {
                     <Route path="/notice" element={<NoticePage />}/>
                     <Route path="/notice/:n_id" element={<NoticeDetailPage />}/>
                     <Route path="/mypage" element={<Mypage />}/>
+                    <Route path="/mypage/setting" element={<SettingPage />}/>
                     <Route path="/login" element={<LoginPage />}/>
                     <Route path="/signin" element={<SigninPage />}/>
                     <Route path="/upload" element={<UploadPage />}/>
                 </Routes>
-            </BrowserRouter>
             <Footer/>
+            </BrowserRouter>
         </>
     );
 }
