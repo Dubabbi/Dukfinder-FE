@@ -25,15 +25,13 @@ const Content = styled.div`
   width: 70%;
 `;
 
-function NoticeDetail() {
-  const { p_id } = useParams();
-  //const post = data.results.find(post => post.p_id === p_id);
-  const [comments, setComments] = useState([]); 
-  const [post, setPost] = useState(null);
-  const [loggedIn, setLoggedIn] = useState(false); // 로그인 여부 상태
+function NoticeDetail(props) {
+  const { n_id } = useParams();
+  const navigate = useNavigate();
+  const [notice, setNotice] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
 
- 
-  
+
   useEffect(() => {
       const token = localStorage.getItem('key');
       if (token) {
@@ -51,29 +49,22 @@ function NoticeDetail() {
           }
       })
       .then(response => {
-          setLoggedIn(true);
-          fetchPost(token);
-      })
-      .catch(error => {
-          setLoggedIn(false);
-          console.error('Invalid token:', error);
-      });
-  };
+        setLoggedIn(true);
 
-  const fetchPost = (token) => {
-      axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/notice/${n_id}`, {
+        axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/notice/${n_id}`, {
           headers: {
               Authorization: `Token ${token}`
           }
-      })
-      .then(response => {
-          setPost(response.data);
-          console.log('포스트를 불러왔습니다.');
-      })
-      .catch(error => {
+        })
+        .then(response => {
+          setNotice(response.data);
+          console.log('공지를 불러왔습니다.');
+          console.log(response.data);
+        })
+        .catch(error => {
           console.error('Error fetching data: ', error);
       });
-  };
+  });
 
   
   if (!post) {
@@ -105,5 +96,5 @@ function NoticeDetail() {
     </>
   );
 }
-
+}
 export default NoticeDetail;

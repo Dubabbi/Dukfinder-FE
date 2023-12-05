@@ -11,8 +11,7 @@ import * as U from '../Upload/UploadStyle';
 import * as N from './NoticeStyle';
 
 const Notice = () => {
-  const { n_id } = useParams();
-  const [findPostData, setFindPostData] = useState([]);
+  const [notice, setNotice] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate= useNavigate();
   const [searchValue, setSearchValue] = useState('');
@@ -42,7 +41,7 @@ const Notice = () => {
           }
         })
         .then(response => {
-          setFindPostData(response.data);
+          setNotice(response.data);
           console.log('포스트를 불러왔습니다.');
         })
         .catch(error => {
@@ -60,11 +59,11 @@ const Notice = () => {
     }
   }, [navigate]);
 
-  const items = findPostData.map((notice) => (
+  const items = notice.map((notice) => (
     <CommonTableRow key={notice.id}>
       <CommonTableColumn>{notice.id}</CommonTableColumn>
       <CommonTableColumn>
-        <Link to={`/notice/${notice.id}`}>{notice.title}</Link>
+        <Link to={`./${notice.id}`}>{notice.title}</Link>
       </CommonTableColumn>
       <CommonTableColumn> {new Date(notice.created_at).toLocaleDateString()}</CommonTableColumn>
       <CommonTableColumn>{notice.view_count}</CommonTableColumn>
