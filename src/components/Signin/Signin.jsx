@@ -129,15 +129,14 @@ const Signin = () => {
         {showWelcomeMessage ? ( 
           <div>
           <L.TitleWrap>
-            <p>{name}님<br />환영합니다!</p>
+            <p>💛{name}님💛<br />환영합니다!</p>
           </L.TitleWrap>
           <L.ContentWrap>
             <S.TextWrap>
-            가입을 완료했습니다.<br />
-            🐤Dukfinder🐤에서 다양한 경험을<br />시작해 보세요!<br />
-            버튼을 누르면 로그인 페이지로 이동합니다.
+            🐤Dukfinder🔍에서 <br />다양한 경험을 시작해 보세요!<br />
+            버튼을 누르면 로그인 페이지로 <br />이동합니다.
           </S.TextWrap></L.ContentWrap>
-          <a href='/login'>
+          <a href='/'>
             <S.BottomButton onClick>
                 확인
             </S.BottomButton>

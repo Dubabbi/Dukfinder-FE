@@ -9,17 +9,18 @@ export const TitleWrap = styled.div`
   color: #262626;
   letter-spacing: 0px;
   line-height: 1.5;
-  p {
-    display: inline; 
-  }
+
 `;
 
 export const TextWrap = styled.div`
   padding: 10%;
-  font-size: 18px;
+  font-size: 1.7rem;
   text-align: center;
   
-  line-height: 1.6;
+  line-height: 1.7;
+  {
+    font-weight: bold;
+  }
 `;
 
 
