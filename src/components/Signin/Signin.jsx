@@ -4,8 +4,6 @@ import axios from 'axios';
 import * as L from '../Login/LoginStyle';
 import * as S from './SigninStyle';
 
-
-
 const Signin = () => {
 
     const [email, setEmail] = useState('');
@@ -131,7 +129,7 @@ const Signin = () => {
         {showWelcomeMessage ? ( 
           <div>
           <L.TitleWrap>
-          <p>[덕새]님<br />환영합니다!</p>
+            <p>{name}님<br />환영합니다!</p>
           </L.TitleWrap>
           <L.ContentWrap>
             <S.TextWrap>

@@ -990,6 +990,18 @@
   resolved "https://registry.npmjs.org/@types/google.maps/-/google.maps-3.53.5.tgz"
   integrity sha512-HoRq4Te8J6krH7hj+TfdYepqegoKZCj3kkaK5gf+ySFSHLvyqYkDvkrtbcVJXQ6QBphQ0h1TF7p4J6sOh4r/zg==
 
+"@types/lodash.memoize@^4.1.7":
+  version "4.1.9"
+  resolved "https://registry.yarnpkg.com/@types/lodash.memoize/-/lodash.memoize-4.1.9.tgz#9f8912d39b6e450c0d342a2b74c99d331bf2016b"
+  integrity sha512-glY1nQuoqX4Ft8Uk+KfJudOD7DQbbEDF6k9XpGncaohW3RW4eSWBlx6AA0fZCrh40tZcQNH4jS/Oc59J6Eq+aw==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.202"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.202.tgz#f09dbd2fb082d507178b2f2a5c7e74bd72ff98f8"
+  integrity sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==
+
 "@types/parse-json@^4.0.0":
   version "4.0.2"
   resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.2.tgz"
@@ -1062,6 +1074,11 @@
     "@babel/plugin-transform-react-jsx-source" "^7.23.3"
     "@types/babel__core" "^7.20.4"
     react-refresh "^0.14.0"
+
+"@wojtekmaj/date-utils@^1.1.3":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@wojtekmaj/date-utils/-/date-utils-1.5.1.tgz#c3cd67177ac781cfa5736219d702a55a2aea5f2b"
+  integrity sha512-+i7+JmNiE/3c9FKxzWFi2IjRJ+KzZl1QPu6QNrsgaa2MuBgXvUy4gA1TVzf/JMdIIloB76xSKikTWuyYAIVLww==
 
 acorn-jsx@^5.3.2:
   version "5.3.2"
@@ -1291,6 +1308,11 @@ classnames@^2.2.6, classnames@^2.3.2:
   resolved "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
 
+clsx@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.0.0.tgz#12658f3fd98fafe62075595a5c30e43d18f3d00b"
+  integrity sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==
+
 color-convert@^1.9.0:
   version "1.9.3"
   resolved "https://registry.npmjs.org/color-convert/-/color-convert-1.9.3.tgz"
@@ -1388,7 +1410,7 @@ csstype@^3.0.2, csstype@^3.1.2:
 
 date-fns@^2.30.0:
   version "2.30.0"
-  resolved "https://registry.npmjs.org/date-fns/-/date-fns-2.30.0.tgz"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.30.0.tgz#f367e644839ff57894ec6ac480de40cae4b0f4d0"
   integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==
   dependencies:
     "@babel/runtime" "^7.21.0"
@@ -1875,6 +1897,14 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
+get-user-locale@^2.2.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/get-user-locale/-/get-user-locale-2.3.1.tgz#fc7319429c8a70fac01b3b2a0b08b0c71c1d3fe2"
+  integrity sha512-VEvcsqKYx7zhZYC1CjecrDC5ziPSpl1gSm0qFFJhHSGDrSC+x4+p1KojWC/83QX//j476gFhkVXP/kNUc9q+bQ==
+  dependencies:
+    "@types/lodash.memoize" "^4.1.7"
+    lodash.memoize "^4.1.1"
+
 glob-parent@^6.0.2:
   version "6.0.2"
   resolved "https://registry.npmjs.org/glob-parent/-/glob-parent-6.0.2.tgz"
@@ -2304,6 +2334,11 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
+lodash.memoize@^4.1.1:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
+  integrity sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==
+
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.npmjs.org/lodash.merge/-/lodash.merge-4.6.2.tgz"
@@ -2358,6 +2393,11 @@ minimatch@^3.0.5, minimatch@^3.1.1, minimatch@^3.1.2:
   integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
   dependencies:
     brace-expansion "^1.1.7"
+
+moment@^2.29.4:
+  version "2.29.4"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.4.tgz#3dbe052889fe7c1b2ed966fcb3a77328964ef108"
+  integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
 
 ms@2.1.2:
   version "2.1.2"
@@ -2600,6 +2640,17 @@ react-bootstrap@^2.9.1:
     react-transition-group "^4.4.5"
     uncontrollable "^7.2.1"
     warning "^4.0.3"
+
+react-calendar@^4.6.1:
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/react-calendar/-/react-calendar-4.6.1.tgz#23dbe4fcf6e3edd731ff8aa92e8e20b28c446fcb"
+  integrity sha512-MvCPdvxEvq7wICBhFxlYwxS2+IsVvSjTcmlr0Kl3yDRVhoX7btNg0ySJx5hy9rb1eaM4nDpzQcW5c87nfQ8n8w==
+  dependencies:
+    "@wojtekmaj/date-utils" "^1.1.3"
+    clsx "^2.0.0"
+    get-user-locale "^2.2.1"
+    prop-types "^15.6.0"
+    tiny-warning "^1.0.0"
 
 react-datepicker@^4.24.0:
   version "4.24.0"
@@ -3001,6 +3052,11 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
+
+tiny-warning@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tiny-warning/-/tiny-warning-1.0.3.tgz#94a30db453df4c643d0fd566060d60a875d84754"
+  integrity sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

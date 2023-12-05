@@ -1,28 +1,84 @@
-// Upload.jsx
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import * as N from '../Notice/NoticeStyle';
-import * as U from './UploadStyle';
+import * as U from './UploadStyle'; 
+import styled from 'styled-components';
 
 const Upload = () => {
   const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedDate, setSelectedDate] = useState(null);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [locations, setLocations] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
-  const handleLocationChange = (e) => {
-    setSelectedLocation(e.target.value);
+  // 이벤트 핸들러들
+  const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleLocationChange = (e) => setSelectedLocation(e.target.value);
+  const handleCategoryChange = (e) => setSelectedCategory(e.target.value);
+  const handleContentChange = (e) => setContent(e.target.value);
+
+  // 등록 버튼 클릭 시 서버로 데이터 전송
+  const handleSubmit = async () => {
+    const token = localStorage.getItem('key');
+
+    if (token) {
+      try {
+        const response = await axios.post(
+          'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/create',
+          {
+            title: title,
+            content: document.getElementById('content').value,
+            location: selectedLocation,
+            category: selectedCategory,
+            date: selectedDate,
+          },
+          {
+            headers: {
+              Authorization: `Token ${token}`,
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+
+        console.log('글 작성 성공:', response);
+        // 성공적으로 등록 후 리디렉션 또는 다른 동작 수행
+      } catch (error) {
+        console.error('글 작성 실패:', error);
+        // 에러 처리, 메시지 표시 또는 다른 동작 수행
+      }
+    } else {
+      console.log('토큰이 없습니다.');
+      navigate('/');
+    }
   };
 
-  const datePickerStyles = {
-    // Adjust the width and height as needed
-    width: '200px', // Set the desired width
-    height: '200px', // Set the desired height
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  };
+  // 페이지 로딩 시 필요한 데이터 초기화
+  useEffect(() => {
+    const token = localStorage.getItem('key');
+
+    if (token) {
+      // 장소와 분류 카테고리 목록 가져오기
+      axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/category/location', {
+        headers: { Authorization: `Token ${token}` }
+      })
+        .then(response => setLocations(response.data))
+        .catch(error => console.error('Error fetching locations:', error));
+
+      axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/find_posts/category/category', {
+        headers: { Authorization: `Token ${token}` }
+      })
+        .then(response => setCategories(response.data))
+        .catch(error => console.error('Error fetching categories:', error));
+    } else {
+      navigate('/');
+    }
+  }, [navigate]);
 
   return (
     <U.MainWrapper>
@@ -30,12 +86,13 @@ const Upload = () => {
         <N.PageTitle>
           <N.TitleText>작성 페이지</N.TitleText>
         </N.PageTitle>
+        {/* 제목, 장소, 분류, 일자를 입력하는 섹션 */}
         <U.Wrapper>
-          <U.Form action="#">
-          <div>
+          <U.Form>
+            <div>
               <U.FormGroup>
                 <U.Label style={{ top: '10%' }}>제목</U.Label>
-                <U.Input type="text" id="name" name="your-name" />
+                <U.Input value={title} onChange={handleTitleChange} />
               </U.FormGroup>
             </div>
             <U.Inline>
@@ -43,48 +100,57 @@ const Upload = () => {
                 <U.Label>장소</U.Label>
                 <U.Select value={selectedLocation} onChange={handleLocationChange}>
                   <option value="" disabled hidden>장소를 선택하세요</option>
-                  <option value="인사대">인사대</option>
-                  <option value="자연대">자연대</option>
+                  {locations.map(location => (
+                    <option key={location.id} value={location.name}>
+                      {location.name}
+                    </option>
+                  ))}
                 </U.Select>
               </div>
               <div>
                 <U.Label>분류</U.Label>
-                <U.Select value={selectedLocation} onChange={handleLocationChange}>
-                  <option value="" disabled hidden></option>
-                  <option value="전자기기">전자기기</option>
-                  <option value="지갑">지갑</option>
+                <U.Select value={selectedCategory} onChange={handleCategoryChange}>
+                  <option value="" disabled hidden>분류를 선택하세요</option>
+                  {categories.map(category => (
+                    <option key={category.id} value={category.name}>
+                      {category.name}
+                    </option>
+                  ))}
                 </U.Select>
               </div>
               <div>
                 <U.Label>일자</U.Label>
                 <U.DatePickerWrapper>
-                  <U.DatePicker
+                  <DatePicker
                     selected={selectedDate}
                     onChange={(date) => setSelectedDate(date)}
                     dateFormat="yyyy-MM-dd"
                     showYearDropdown
                     scrollableYearDropdown
                     yearDropdownItemNumber={15}
-                    styles={{ width: '100px;'}}
+                    styles={{ width: '100px;' }}
                   />
                 </U.DatePickerWrapper>
               </div>
             </U.Inline>
           </U.Form>
         </U.Wrapper>
+        {/* 메시지와 이미지 업로드를 입력하는 섹션 */}
         <U.Wrapper>
           <U.SecondForm>
             <div>
-              <U.Label htmlFor="message">Message</U.Label>
-              <U.Textarea type="text" id="message" name="your-message"></U.Textarea>
+              <U.Label>message</U.Label>
+              <U.Textarea value={content} onChange={handleContentChange}></U.Textarea>
             </div>
             <div>
               <U.InlineImg>
                 <U.Label htmlFor="image">이미지</U.Label>
-                <U.ImgButton onClick>파일선택</U.ImgButton>
+                <U.ImgButton onClick={() => console.log('파일 선택')}>
+                  파일선택
+                </U.ImgButton>
               </U.InlineImg>
             </div>
-            <U.SubmitButton />
+            <U.SubmitButton onClick={handleSubmit}>등록</U.SubmitButton>
           </U.SecondForm>
         </U.Wrapper>
       </N.Section>

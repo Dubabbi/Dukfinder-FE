@@ -98,16 +98,7 @@ export const SearchInput = styled.input`
     border-color: #111;
     outline: 0;
     border-width: 1px;
-    border-radius: 25px;
-  }
-
-  /* New style for SVG icon */
-  & + svg {
-    margin-left: -35px; /* Adjust the margin as needed */
-    cursor: pointer;
-    fill: #000; /* Adjust the color as needed */
-    height: 20px;
-
+    border-radius: 15px;
   }`
 
   
