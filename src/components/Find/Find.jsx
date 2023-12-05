@@ -15,6 +15,7 @@ function Find() {
     const [loggedIn, setLoggedIn] = useState(false); // 로그인 여부 상태
     const [findPostData, setFindPostData] = useState([]);
 
+    
     useEffect(() => {
         const token = localStorage.getItem('key');
         console.log('토큰 값:', token); // 토큰 값 확인
