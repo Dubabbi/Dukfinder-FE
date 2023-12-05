@@ -8,7 +8,8 @@ import NoticeDetailPage from './pages/NoticeDetail';
 import Mypage from './pages/Mypage';
 import LoginPage from './pages/Login';
 import SigninPage from './pages/Signin';
-import UploadPage from './pages/Upload';
+import FindUploadPage from './pages/FindUpload';
+import LostUploadPage from './pages/LostUpload';
 import Nav from './components/Navbar/Nav';
 import Footer from './components/Footer/Footer';
 import LostDetailPage from './pages/LostDetail';
@@ -32,7 +33,8 @@ export default function Router() {
                     <Route path="/mypage" element={<Mypage />}/>
                     <Route path="/mypage/setting" element={<SettingPage />}/>
                     <Route path="/signin" element={<SigninPage />}/>
-                    <Route path="/upload" element={<UploadPage />}/>
+                    <Route path="/findupload" element={<FindUploadPage />}/>
+                    <Route path="/lostupload" element={<LostUploadPage />}/>
                     <Route path="/mypage/setting/pw" element={<ChangePassword />}/>
                 </Routes>
             <Footer/>

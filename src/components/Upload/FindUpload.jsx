@@ -37,11 +37,12 @@ const PostCreationPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPlace, setSelectedPlace] = useState('');
   const [selectedFile, setSelectedFile] = useState('');
+  // const [loggedIn, setLoggedIn] = useState(false);
   const [findPostData, setFindPostData] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
 
   const navigate = useNavigate();
-
+  
   const formatDate = (date) => {
     const year = date.getFullYear();
     const month = `${date.getMonth() + 1}`.padStart(2, '0');
@@ -90,7 +91,7 @@ const PostCreationPage = () => {
       // 토큰이 없는 경우 처리
     }
   };
- 
+
 
   return (
     <U.MainWrapper>
@@ -181,5 +182,38 @@ const PostCreationPage = () => {
     </U.MainWrapper>
   );
 };
+
 export default PostCreationPage;
 
+//     <div>
+//       <label>제목:</label>
+//       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+
+//       <label>장소 선택:</label>
+//       <select value={selectedPlace} onChange={(e) => setSelectedPlace(e.target.value)}>
+//         <option value="">장소 선택</option>
+//         {placesList.map((place, index) => (
+//           <option key={index} value={place}>{place}</option>
+//         ))}
+//       </select>
+
+//       <label>분류 선택:</label>
+//       <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
+//         <option value="">분류 선택</option>
+//         {categoriesList.map((category, index) => (
+//           <option key={index} value={category}>{category}</option>
+//         ))}
+//       </select>
+
+//       {/* 달력 선택 기능은 DatePicker 등의 라이브러리를 사용하여 구현 가능합니다. */}
+//       {/* 이미지 업로드 기능도 다양한 라이브러리를 활용하여 구현할 수 있습니다. */}
+
+//       <label>일자 선택:</label>
+//       <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
+
+//       <label>본문 작성:</label>
+//       <textarea value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+
+//       <button onClick={handleSubmit}>저장</button>
+//     </div>
+//   );
