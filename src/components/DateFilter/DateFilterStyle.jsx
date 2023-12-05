@@ -14,7 +14,7 @@ export const DropdownMenu = styled.select`
     font-size: 14px;
     position: absolute;
     left: 20px;
-    top: 5px;
+    top: 8px;
     width: auto;
 `;
 
@@ -32,7 +32,7 @@ export const DropDownWrapper = styled.div`
     align-items: center;
     border: 2px solid #FFE665;
     height: 35px;
-    width: 90px;
+    width: 100px;
     border-radius: 10px;
     
 `;
