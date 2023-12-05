@@ -104,7 +104,7 @@ function Find() {
                             p_createtime={post.created_at}
                             p_updatetime={post.updated_at}
                             p_author={post.author}
-                            p_comment={post.comment}
+                            p_comment={post.comments}
                         />
                     ))
                 ) : (
