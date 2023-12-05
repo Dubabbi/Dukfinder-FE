@@ -69,7 +69,11 @@ export const Select = styled.select`
   border-radius: 5px;
   font-size: 2rem;
   font-family: inherit;
+  color: #222;
   width: 300px;
+  option{
+    cursor: pointer;
+  }
 `;
 
 

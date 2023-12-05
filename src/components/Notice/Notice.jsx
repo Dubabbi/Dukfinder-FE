@@ -11,6 +11,7 @@ import * as U from '../Upload/UploadStyle';
 import * as N from './NoticeStyle';
 
 const Notice = () => {
+  const { n_id } = useParams();
   const [findPostData, setFindPostData] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate= useNavigate();
