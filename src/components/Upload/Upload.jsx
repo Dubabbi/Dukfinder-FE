@@ -193,7 +193,7 @@ export default function Upload() {
             </div>
             <div>
               <U.InlineImg>
-                <U.Label htmlFor="image">이미지</U.Label>
+                <U.Label>이미지</U.Label>
                 <U.ImgButton onClick={() => console.log('파일 선택')}>
                   파일선택
                 </U.ImgButton>
