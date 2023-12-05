@@ -1,5 +1,4 @@
 import * as D from "./FindDetailStyle";
-import { data } from '../../postData';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import FindDetailCard from './FindDetailCard';

@@ -7,31 +7,37 @@ import { data } from '../../postData';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import axios from 'axios';
 
 function LostDetailCard(props) {
     const { p_id } = useParams();
     const { post } = props;
-
-
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // const handleDelete = () => {
-    //     deletePost(post.p_id);
+    const handleDelete = () => {
+        const token = localStorage.getItem('key');
 
-    //     console.log('포스트를 삭제합니다:', post.p_id);
-    //     handleClose();
-    //     navigate('/lost');// 목록 페이지로 이동
-    // };
-
-    // const deletePost = (postId) => {
-    //     const updatedData = data.results.filter(item => item.p_id !== postId);
-    //     data.results = updatedData; // 가상의 data 객체 업데이트 (실제로는 데이터베이스 등에 반영해야 함)
-    // };
+        
+        axios.delete(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/lost_posts/${p_id}`, {
+            headers: {
+                Authorization: `Token ${token}`
+            }
+        })
+        .then(response => {
+            // 삭제 성공 시 처리할 내용
+            console.log('포스트가 성공적으로 삭제되었습니다.');
+            navigate('../lost');
+        })
+        .catch(error => {
+            // 삭제 실패 시 처리할 내용
+            console.error('포스트 삭제 중 오류 발생: ', error);
+        });
+    };
 
     return (
         <D.CardStyle style={{ width: '65rem' }}>
@@ -47,7 +53,7 @@ function LostDetailCard(props) {
                             <D.ModalCloseButton variant="secondary" onClick={handleClose}>
                                 취소
                             </D.ModalCloseButton>
-                            <D.ModalButton variant="warning" onClick={handleClose}>
+                            <D.ModalButton variant="warning"  onClick={handleDelete}>
                                 삭제하기
                             </D.ModalButton>
                         </Modal.Footer>

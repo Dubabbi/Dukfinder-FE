@@ -32,11 +32,12 @@ const VocViewContent = styled.div`
   width: 70%;
 `;
 
-function NoticeDetail() {
-  const { n_Id } = useParams();
+function NoticeDetail(props) {
+  const { n_id } = useParams();
   const navigate = useNavigate();
   const [notice, setNotice] = useState({});
   const [loggedIn, setLoggedIn] = useState(false);
+
 
   useEffect(() => {
     const token = localStorage.getItem('key');
@@ -51,14 +52,15 @@ function NoticeDetail() {
       .then(response => {
         setLoggedIn(true);
 
-        axios.get('https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/notice/', {
+        axios.get(`https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/notice/${n_id}`, {
           headers: {
             Authorization: `Token ${token}`
           }
         })
         .then(response => {
-          setFindPostData(response.data);
-          console.log('포스트를 불러왔습니다.');
+          setNotice(response.data);
+          console.log('공지를 불러왔습니다.');
+          console.log(response.data);
         })
         .catch(error => {
           console.error('Error fetching data: ', error);
