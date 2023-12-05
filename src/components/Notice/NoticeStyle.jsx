@@ -169,51 +169,10 @@ export const BoardLink = styled.a`
   }
 `
 
-export const PaginationWrapper = styled.ul`
-  list-style: none;
-  display: flex;
-  font-size: 20px;
-  justify-content: center;
-  margin-top: 20px;
-
-  li {
-    margin: 0 5px;
-    display: inline-block;
-  }
-
-  a {
-    display: block;
-    padding: 8px 12px;
-    text-decoration: none;
-    cursor: pointer;
-
-    &.active {
-      background-color: #333;
-      color: #fff;
-    }
-  }
-`
-
-
-
-export const PageNumber = styled.a`
-  margin: 0 10px;
-  color: #007bff;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`
-
-export const CurrentPage = styled.span`
-  margin: 0 10px;
-  font-weight: bold;
-`
 
 
 export const Search_Container=styled.div`
-    margin: 60px;
+    margin: 50px;
     display: flex;
     justify-content: center;
 `
@@ -242,7 +201,7 @@ export const StyledButton = styled(Button)`
 
 export const StyledForm = styled(Form)`
     width: 700px;
-    height: 50px; 
+    height: 46px; 
     font-size: 16px; 
     border-radius: 25px;
     border: 2px solid black;
@@ -251,10 +210,11 @@ export const StyledForm = styled(Form)`
     position: relative;
     
     .form-control {
-        height: 46px; 
+        height: 42px; 
         font-size: 16px; 
         border-radius: 25px;
         padding-right: 80px; 
         padding-left: 20px;
     }
 `;
+
