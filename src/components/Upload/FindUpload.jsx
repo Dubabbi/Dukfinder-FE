@@ -44,12 +44,6 @@ const PostCreationPage = () => {
 
   const navigate = useNavigate();
 
-  // const formatDate = (date) => {
-  //   const year = date.getFullYear();
-  //   const month = `${date.getMonth() + 1}`.padStart(2, '0');
-  //   const day = `${date.getDate()}`.padStart(2, '0');
-  //   return `${year}-${month}-${day}`;
-  // };
 
   const handleSubmit = async () => {
 
@@ -57,7 +51,7 @@ const PostCreationPage = () => {
 
     if (token) {
       try {
-        // const formattedDate = formatDate(selectedDate);
+
         const newPost = {
           title: title,
           content: content,
@@ -103,7 +97,7 @@ const PostCreationPage = () => {
     <U.MainWrapper>
       <N.Section>
         <N.PageTitle>
-          <N.TitleText>작성 페이지</N.TitleText>
+          <N.TitleText>습득물 작성 페이지</N.TitleText>
         </N.PageTitle>
         {/* 제목, 장소, 분류, 일자를 입력하는 섹션 */}
         <U.Wrapper>
@@ -184,6 +178,7 @@ const PostCreationPage = () => {
               </U.InlineImg>
             </div>
             <U.SubmitButton type="submit" value="저장" />
+            
           </U.SecondForm>
         </U.Wrapper>
       </N.Section>

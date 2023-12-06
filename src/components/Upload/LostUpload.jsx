@@ -43,31 +43,25 @@ const LostPostCreationPage = () => {
 
   const navigate = useNavigate();
   
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = `${date.getMonth() + 1}`.padStart(2, '0');
-    const day = `${date.getDate()}`.padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
+ 
   const handleSubmit = async () => {
 
     const token = localStorage.getItem('key');
 
     if (token) {
       try {
-        const formattedDate = formatDate(selectedDate); 
+
         const newPost = {
           title: title,
           content: content,
-          date_select: formattedDate,
+          date_select: selectedDate,
           category: selectedCategory,
-          found_status: "찾음", // 해당 필드는 공란으로 처리
+          status: "못찾음", // 해당 필드는 공란으로 처리
           location: selectedPlace
         };
 
         const response = await axios.post(
-          'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/lost_posts/create',
+          'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/lost_posts/create/',
           newPost,
           {
             headers: {
@@ -79,7 +73,6 @@ const LostPostCreationPage = () => {
         // 요청 성공 시 실행되는 로직 (예: 페이지 이동 등)
         console.log('포스트가 등록되었습니다.', response.data);
         console.log(response.data);
-        navigate('../find');
      
 
       } catch (error) {
@@ -90,6 +83,8 @@ const LostPostCreationPage = () => {
       console.log('토큰이 없습니다. 로그인이 필요합니다.');
       // 토큰이 없는 경우 처리
     }
+
+    navigate('/lost');
   };
 
   const handleDateChange = (e) => {
@@ -100,7 +95,7 @@ const LostPostCreationPage = () => {
     <U.MainWrapper>
       <N.Section>
         <N.PageTitle>
-          <N.TitleText>작성 페이지</N.TitleText>
+          <N.TitleText>분실물 작성 페이지</N.TitleText>
         </N.PageTitle>
         {/* 제목, 장소, 분류, 일자를 입력하는 섹션 */}
         <U.Wrapper>
@@ -189,36 +184,3 @@ const LostPostCreationPage = () => {
 };
 
 export default LostPostCreationPage;
-
-//     <div>
-//       <label>제목:</label>
-//       <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
-
-//       <label>장소 선택:</label>
-//       <select value={selectedPlace} onChange={(e) => setSelectedPlace(e.target.value)}>
-//         <option value="">장소 선택</option>
-//         {placesList.map((place, index) => (
-//           <option key={index} value={place}>{place}</option>
-//         ))}
-//       </select>
-
-//       <label>분류 선택:</label>
-//       <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}>
-//         <option value="">분류 선택</option>
-//         {categoriesList.map((category, index) => (
-//           <option key={index} value={category}>{category}</option>
-//         ))}
-//       </select>
-
-//       {/* 달력 선택 기능은 DatePicker 등의 라이브러리를 사용하여 구현 가능합니다. */}
-//       {/* 이미지 업로드 기능도 다양한 라이브러리를 활용하여 구현할 수 있습니다. */}
-
-//       <label>일자 선택:</label>
-//       <input type="date" value={selectedDate} onChange={(e) => setSelectedDate(e.target.value)} />
-
-//       <label>본문 작성:</label>
-//       <textarea value={content} onChange={(e) => setContent(e.target.value)}></textarea>
-
-//       <button onClick={handleSubmit}>저장</button>
-//     </div>
-//   );
