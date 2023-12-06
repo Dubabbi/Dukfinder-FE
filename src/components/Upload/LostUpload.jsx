@@ -30,7 +30,7 @@ const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
   </div>
 ));
 
-const PostCreationPage = () => {
+const LostPostCreationPage = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
@@ -62,12 +62,12 @@ const PostCreationPage = () => {
           content: content,
           date_select: formattedDate,
           category: selectedCategory,
-          LostAndFound: null, // 해당 필드는 공란으로 처리
+          found_status: "찾음", // 해당 필드는 공란으로 처리
           location: selectedPlace
         };
 
         const response = await axios.post(
-          'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/lost_posts/create/',
+          'https://port-0-dukfinder-57lz2alpp5sfxw.sel4.cloudtype.app/lost_posts/create',
           newPost,
           {
             headers: {
@@ -92,6 +92,9 @@ const PostCreationPage = () => {
     }
   };
 
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
 
   return (
     <U.MainWrapper>
@@ -135,13 +138,18 @@ const PostCreationPage = () => {
                 <U.Label>일자</U.Label>
                 {/* customInput 컴포넌트 사용 */}
                 <U.DatePickerWrapper>
-                  <div className='App'>
-                    <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)} />
-                  </div>
-                  <DatePicker
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    customInput={<CustomInput />} />
+                 
+                  <label htmlFor="datePicker">
+                     날짜 선택:
+                  </label>
+                   <U.DateCalendar
+                    type="date"
+                    id="datePicker"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                  />
+                  
+                 
                 </U.DatePickerWrapper>
               </div>
             </U.Inline>
@@ -159,7 +167,7 @@ const PostCreationPage = () => {
                 <U.Label>이미지</U.Label>
                 <U.ImgButton>
                   <input
-                  value={selectedFile}
+                    value={selectedFile}
                     type="file"
                     style={{ display: 'none' }}
                     onChange={(e) => {
@@ -170,12 +178,9 @@ const PostCreationPage = () => {
                   />
                   파일선택
                 </U.ImgButton>
-
               </U.InlineImg>
-
-
             </div>
-            <U.SubmitButton  onSubmit={() => handleSubmit(event)} type="submit" value="저장"  />
+            <U.SubmitButton type="submit" value="저장" />
           </U.SecondForm>
         </U.Wrapper>
       </N.Section>
@@ -183,7 +188,7 @@ const PostCreationPage = () => {
   );
 };
 
-export default PostCreationPage;
+export default LostPostCreationPage;
 
 //     <div>
 //       <label>제목:</label>

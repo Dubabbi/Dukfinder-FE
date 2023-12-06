@@ -1,5 +1,5 @@
-import PostCreationPage from '../components/Upload/FindUpload';
+import LostPostCreationPage from '../components/Upload/LostUpload';
 
 export default function LostUploadPage() {
-    return <><PostCreationPage/></>;
+    return <><LostPostCreationPage/></>;
 }
