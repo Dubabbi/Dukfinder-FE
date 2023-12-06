@@ -80,7 +80,7 @@ const Login = () => {
         localStorage.setItem('key', response.data.token);
   
         // navigate 함수를 사용하여 페이지 이동
-        navigate('/main');
+        navigate('/');
       } else {
         // 로그인 실패 시
         alert('로그인에 실패했습니다.');
