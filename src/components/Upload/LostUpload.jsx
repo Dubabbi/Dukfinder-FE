@@ -43,26 +43,20 @@ const PostCreationPage = () => {
 
   const navigate = useNavigate();
   
-  const formatDate = (date) => {
-    const year = date.getFullYear();
-    const month = `${date.getMonth() + 1}`.padStart(2, '0');
-    const day = `${date.getDate()}`.padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
+ 
   const handleSubmit = async () => {
 
     const token = localStorage.getItem('key');
 
     if (token) {
       try {
-        const formattedDate = formatDate(selectedDate); 
+
         const newPost = {
           title: title,
           content: content,
-          date_select: formattedDate,
+          date_select: selectedDate,
           category: selectedCategory,
-          LostAndFound: null, // 해당 필드는 공란으로 처리
+          status: "못찾음", // 해당 필드는 공란으로 처리
           location: selectedPlace
         };
 
@@ -79,7 +73,7 @@ const PostCreationPage = () => {
         // 요청 성공 시 실행되는 로직 (예: 페이지 이동 등)
         console.log('포스트가 등록되었습니다.', response.data);
         console.log(response.data);
-        navigate('../find');
+        navigate('../lost');
      
 
       } catch (error) {
@@ -92,12 +86,15 @@ const PostCreationPage = () => {
     }
   };
 
+  const handleDateChange = (e) => {
+    setSelectedDate(e.target.value);
+  };
 
   return (
     <U.MainWrapper>
       <N.Section>
         <N.PageTitle>
-          <N.TitleText>작성 페이지</N.TitleText>
+          <N.TitleText>분실물 작성 페이지</N.TitleText>
         </N.PageTitle>
         {/* 제목, 장소, 분류, 일자를 입력하는 섹션 */}
         <U.Wrapper>
@@ -135,13 +132,18 @@ const PostCreationPage = () => {
                 <U.Label>일자</U.Label>
                 {/* customInput 컴포넌트 사용 */}
                 <U.DatePickerWrapper>
-                  <div className='App'>
-                    <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)} />
-                  </div>
-                  <DatePicker
-                    selected={selectedDate}
-                    onChange={(date) => setSelectedDate(date)}
-                    customInput={<CustomInput />} />
+                 
+                  <label htmlFor="datePicker">
+                     날짜 선택:
+                  </label>
+                   <U.DateCalendar
+                    type="date"
+                    id="datePicker"
+                    value={selectedDate}
+                    onChange={handleDateChange}
+                  />
+                  
+                 
                 </U.DatePickerWrapper>
               </div>
             </U.Inline>
