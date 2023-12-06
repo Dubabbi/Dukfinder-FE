@@ -33,7 +33,7 @@ export default function MyPage() {
     }, []);
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const sizeInVW = 10; // 원하는 크기를 vw 단위로 지정합니다.
+    const sizeInVW = 10; // 원하는 크기를 vw 단위로 지정
     const sizeInPixels = (windowWidth * sizeInVW) / 100;
   
     useEffect(() => {
