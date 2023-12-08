@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Comment from "../Comment/Comment";
 import CommentForm from "../Comment/CommentForm";
 import CommentList from "../Comment/CommentList";
 import axios from 'axios';

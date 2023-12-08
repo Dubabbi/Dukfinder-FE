@@ -1,5 +1,4 @@
 // UploadStyle.jsx
-import DatePicker from 'react-datepicker';
 import styled from 'styled-components';
 
 export const MainWrapper = styled.div`
