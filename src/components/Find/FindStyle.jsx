@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 import { Card } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 
 export const FindWrapper = styled.div`
     color: black;

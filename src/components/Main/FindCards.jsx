@@ -2,7 +2,6 @@ import * as M from './MainStyle';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import SearchBar from './../SearchBar/SearchBar';
 
 export default function FindCard({ searchTerm }) {
     const [data, setData] = useState([]);
