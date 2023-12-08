@@ -1,9 +1,7 @@
 import * as D from "./LostDetailStyle";
-import { data } from '../../postData';
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LostDetailCard from './LostDetailCard';
-import Image from 'react-bootstrap/Image';
 import axios from 'axios';
 import CommentMain from "../Comment/CommentMain";
 
