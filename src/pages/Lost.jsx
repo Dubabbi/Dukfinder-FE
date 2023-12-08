@@ -1,5 +1,5 @@
 import Lost from '../components/Lost/Lost';
-import {data} from '../postData';
+import {data} from '../core/postData';
 import Container from 'react-bootstrap/Container';
 import UploadIcon from '../components/UploadIcon/UploadIcon';
 

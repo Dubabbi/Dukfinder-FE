@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate }  from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Card from 'react-bootstrap/Card';
 import * as D from "./LostDetailStyle";
-import { data } from '../../postData';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 

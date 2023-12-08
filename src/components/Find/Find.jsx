@@ -1,7 +1,6 @@
 import * as F from './FindStyle';
 import React, { useState, useEffect } from 'react';
 import PostCard from './PostCard';
-import { data } from '../../postData';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 import DateFilter from '../DateFilter/DateFilter';
