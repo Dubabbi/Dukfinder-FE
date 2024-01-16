@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import * as C from "./CommentStyle";
 
 class Comment extends Component {
    render() {

@@ -1,12 +1,10 @@
 import * as U from './UploadStyle';
 import * as N from '../Notice/NoticeStyle';
-import DatePicker from 'react-datepicker';
 import './Upload.css'
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaCalendarAlt } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const placesList = [
   "정문·대학본부", "후문", "인문사회관", "대강의동", "차마리사기념관",
@@ -16,19 +14,6 @@ const placesList = [
 const categoriesList = [
   "전자기기", "지갑,카드", "악세사리", "화장품", "기타"
 ];
-
-const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
-  <div className='input-group'>
-    <input type='text' className='form-control' value={value} onClick={onClick} readOnly ref={ref} />
-    <U.Inline>
-      <div className='input-group-append'>
-        <span className='input-group-text'>
-          <FaCalendarAlt />
-        </span>
-      </div>
-    </U.Inline>
-  </div>
-));
 
 const LostPostCreationPage = () => {
   const [title, setTitle] = useState('');
@@ -131,7 +116,6 @@ const LostPostCreationPage = () => {
               </div>
               <div>
                 <U.Label>일자</U.Label>
-                {/* customInput 컴포넌트 사용 */}
                 <U.DatePickerWrapper>
                  
                   <label htmlFor="datePicker">

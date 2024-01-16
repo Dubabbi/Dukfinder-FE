@@ -1,9 +1,5 @@
-import * as F from './FooterStyle';
 import React from "react"
-import { Link} from 'react-router-dom';
 import './Footer.css';
-const Front = ['윤소은', '조예영', '최유리'];
-const Back = ['김나영', '여현정'];
 
 
 export default function Footer() {

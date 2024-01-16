@@ -1,8 +1,5 @@
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { FaCalendarAlt } from 'react-icons/fa';
 
 export const LostWrapper = styled.div`
     color: black;

@@ -1,7 +1,6 @@
 import * as L from './LostStyle';
 import React, { useState, useEffect } from 'react';
 import LostPostCard from './LostPostCard';
-import { data } from '../../postData';
 import SearchBar from '../SearchBar/SearchBar';
 import { Link } from 'react-router-dom';
 import DateFilter from '../DateFilter/DateFilter';
